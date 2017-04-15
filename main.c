@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asm.h                                              :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/15 17:40:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/04/15 19:48:10 by plefebvr         ###   ########.fr       */
+/*   Created: 2017/04/15 17:49:13 by plefebvr          #+#    #+#             */
+/*   Updated: 2017/04/15 18:12:33 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ASM_H
-# define ASM_H
+#include "includes/asm.h"
 
-# include "../libft/includes/libft.h"
-
-void				asm_error(int e);
-void				parse_s_file(char *
-#endif
+int		main(int ac, char **av)
+{
+	if (ac == 1)
+		asm_error(0);
+	ft_printf("av[1] = %s\n", av[1]);
+	parse_s_file(av[ac - 1]);
+	return (0);
+}

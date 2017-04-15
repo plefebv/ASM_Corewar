@@ -6,7 +6,7 @@
 #    By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/15 17:35:10 by plefebvr          #+#    #+#              #
-#    Updated: 2017/04/15 17:41:25 by plefebvr         ###   ########.fr        #
+#    Updated: 2017/04/15 19:48:07 by plefebvr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ RM		= /bin/rm -rf
 CFLAGS	= -Wall -Wextra -Werror
 
 FILES	= 	main.c \
+			error.c \
+			parse.c
 
 LIB	= -L libft -lft
 
