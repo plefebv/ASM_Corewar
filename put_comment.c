@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 14:20:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/04 23:09:59 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/04 23:09:34 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,20 @@ static void		last_join(char *s, t_env *env)
 	while (s[i] && s[i] != '"')
 		i++;
 	tojoin = ft_strsub(s, 0, i);
-	env->name = ft_strjoin(env->name, "\n");
-	env->name = ft_strjoin(env->name, tojoin);
+	env->comment = ft_strjoin(env->comment, "\n");
+	env->comment = ft_strjoin(env->comment, tojoin);
 	ft_memdel((void **)&tojoin);
 }
 
-static void		get_name(char *name, t_env *env, char *line, int c)
+static void		get_comment(char *comment, t_env *env, char *line, int c)
 {
 	char	*tmp;
 	int		i;
 	int		j;
 
 	i = 0;
-	tmp = ft_strsub(name, ft_strlen(NAME_CMD_STRING), \
-			ft_strlen(name) - ft_strlen(NAME_CMD_STRING));
+	tmp = ft_strsub(comment, ft_strlen(COMMENT_CMD_STRING), \
+			ft_strlen(comment) - ft_strlen(COMMENT_CMD_STRING));
 	while (tmp[i] && (tmp[i] == ' ' || tmp[i] == '\t'))
 		i++;
 	if (tmp[i] == '"')
@@ -56,17 +56,17 @@ static void		get_name(char *name, t_env *env, char *line, int c)
 		i++;
 	}
 	else
-		asm_error(2, env->nb_l);
+		asm_error(3, env->nb_l);
 	j = i;
 	while (tmp[j] && tmp[j] != '"')
 		j++;
-	env->name = ft_strsub(tmp, i, j - i);
+	env->comment = ft_strsub(tmp, i, j - i);
 	if (!tmp[j])
 	{
 		while (get_next_line(env->fd, &line) > 0)
 		{
 			env->nb_l++;
-			if (contain_quote(line))
+	  		if (contain_quote(line))
 			{
 				c++;
 				last_join(line, env);
@@ -74,16 +74,16 @@ static void		get_name(char *name, t_env *env, char *line, int c)
 			}
 			else
 			{
-				env->name = ft_strjoin(env->name, "\n");
-				env->name = ft_strjoin(env->name, line);
+				env->comment = ft_strjoin(env->comment, "\n");
+				env->comment = ft_strjoin(env->comment, line);
 			}
 		}
 		if (!c)
-			asm_error(4, env->nb_l);
+			asm_error(5, env->nb_l);
 	}
 }
 
-void			put_name(char *l, t_env *env)
+void			put_comment(char *l, t_env *env)
 {
 	int		i;
 	char	*trim;
@@ -92,8 +92,8 @@ void			put_name(char *l, t_env *env)
 	while (l[i] && (l[i] == ' ' || l[i] == '\t'))
 		i++;
 	trim = ft_strsub(l, i, ft_strlen(l) - i);
-	if (!(ft_strncmp(trim, NAME_CMD_STRING, ft_strlen(NAME_CMD_STRING))))
-			get_name(trim, env, NULL, 0);
-	if (ft_strlen(env->name) > PROG_NAME_LENGTH)
-		asm_error(6, env->nb_l);
+	if (!(ft_strncmp(trim, COMMENT_CMD_STRING, ft_strlen(COMMENT_CMD_STRING))))
+			get_comment(trim, env, NULL, 0);
+	if (ft_strlen(env->comment) > COMMENT_LENGTH)
+		asm_error(7, env->nb_l);
 }

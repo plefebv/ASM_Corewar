@@ -6,7 +6,7 @@
 #    By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/07/21 10:45:45 by plefebvr          #+#    #+#              #
-#    Updated: 2016/10/04 17:05:36 by plefebvr         ###   ########.fr        #
+#    Updated: 2017/05/06 06:22:13 by plefebvr         ###   ########.fr        #
 # **************************************************************************** #
 
 NAME = libft.a
@@ -79,6 +79,7 @@ SRC =	ft_isprint.c \
 		ft_checkchar.c \
 		ft_strtolower.c \
 		ft_strdup_f.c \
+		ft_strrealloc.c \
 		get_next_line.c \
 		ft_printf.c \
 		pf_lst_utils.c \

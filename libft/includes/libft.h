@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 14:49:09 by plefebvr          #+#    #+#             */
-/*   Updated: 2016/11/23 16:11:09 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/06 06:25:13 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ char				*ft_strdup(const char *s);
 char				*ft_strdup_f(const char *s);
 char				*ft_strndup(const char *s, size_t n);
 char				*ft_strtolower(char *s);
+char				*ft_strrealloc(char *str, size_t size);
 size_t				ft_strlen(const char *s);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putstr(char const *s);

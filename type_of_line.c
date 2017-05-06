@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 15:33:17 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/04/18 19:45:19 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/04/24 16:40:29 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,18 @@ static int		check_if_label(char *line)
 	{
 		if (line[i] == LABEL_CHAR && i > 0)
 		{
-			ft_memdel((void **)lchars);
+			ft_memdel((void **)&lchars);
 			return (1);
 		}
 		else if (!(ft_strchr(lchars, line[i])))
 		{
-			ft_memdel((void **)lchars);
+			ft_memdel((void **)&lchars);
 			return (0);
 		}
 		else
 			i++;
 	}
-	ft_memdel((void **)lchars);
+	ft_memdel((void **)&lchars);
 	return (-1);
 }
 
