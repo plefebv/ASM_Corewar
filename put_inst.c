@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 22:40:39 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/08 07:29:07 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/08 07:43:26 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,20 @@ static int			get_inst_size(t_inst *inst)
 	return (ret);
 }
 
-//static int			get_position(t_inst *inst)
+static int			get_position(t_env *env)
+{
+	int		pos;
+	t_inst	*tmp;
+
+	pos = 0;
+	tmp = env->inst;
+	while (tmp->next)
+	{
+		pos += tmp->size;
+		tmp = tmp->next;
+	}
+	return (pos);
+}
 
 void				put_inst(char *l, t_env *env)
 {
@@ -104,8 +117,8 @@ void				put_inst(char *l, t_env *env)
 	ft_printf("TRIMY LINE = |%s|\n", trim);
 	inst->arg = get_arg(trim);
 	inst->size = get_inst_size(inst);
-/*	inst->ocp = get_ocp(inst->instruction, inst->arg);
-	inst->pos = get_position(env);*/
+/*	inst->ocp = get_ocp(inst->instruction, inst->arg);*/
+	inst->pos = get_position(env);
 	inst->next = NULL;
 	env->have_label = 0;
 }
