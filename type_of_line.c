@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 15:33:17 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/08 04:08:16 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/08 07:28:13 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,20 @@ int		get_opcode(char *line)
 	}
 	ft_memdel((void **)&tmp);
 	return (-1);
+}
+
+t_op			*get_optab(char *name)
+{
+	int		i;
+
+	i = 0;
+	while (op_tab[i].inst)
+	{
+		if (!(ft_strcmp(op_tab[i].inst, name)))
+				return (&op_tab[i]);
+		i++;
+	}
+	return (NULL);
 }
 
 int				get_type_line(char *l)

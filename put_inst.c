@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 22:40:39 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/08 07:04:58 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/08 07:29:07 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,42 @@ static char				**get_arg(char *l)
 	return (ret);
 }
 
-//static int			get_inst_size(t_inst *inst)
+static int			get_arg_size(char *arg, t_op *op)
+{
+	if (arg[0] == 'r')
+		return (1);
+	else if (arg[0] == DIRECT_CHAR)
+		return (op->label_size);
+	else
+		return (2);
+}
+
+static int			get_inst_size(t_inst *inst)
+{
+	int		i;
+	t_op	*op;
+	int		ret;
+
+	i = 0;
+	ret = 1;
+	if (inst->arg == NULL)
+		return (0);
+	op = get_optab(inst->instruction);
+	ret += op->need_cod;
+	while (inst->arg[i])
+	{
+		ret += get_arg_size(inst->arg[i], op);
+		i++;
+	}
+	return (ret);
+}
+
 //static int			get_position(t_inst *inst)
 
 void				put_inst(char *l, t_env *env)
 {
 	char		*trim;
-	int			i = 0;
 	t_inst		*inst;
-//	t_op		op_tab;
 
 	trim = ft_strtrim(l);
 	inst = get_last_inst(env);
@@ -76,8 +103,8 @@ void				put_inst(char *l, t_env *env)
 	inst->instruction = get_inst_name(&trim);
 	ft_printf("TRIMY LINE = |%s|\n", trim);
 	inst->arg = get_arg(trim);
-	/*	inst->size = get_inst_size(inst);
-	inst->ocp = get_ocp(inst->instruction, inst->arg);
+	inst->size = get_inst_size(inst);
+/*	inst->ocp = get_ocp(inst->instruction, inst->arg);
 	inst->pos = get_position(env);*/
 	inst->next = NULL;
 	env->have_label = 0;

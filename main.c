@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:49:13 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/08 06:11:55 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/08 07:30:12 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int		main(int ac, char **av)
 				ft_printf("arg = |%s|\n", i->arg[c]);
 				c++;
 			}
+			ft_printf("total octal size = %d\n",  i->size);
 			ft_printf("\n");
 			c = 0;
 			i = i->next;
