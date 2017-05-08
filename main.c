@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:49:13 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/08 04:38:31 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/08 05:18:25 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,26 @@ int		main(int ac, char **av)
 	if (ac == 1)
 		asm_error(0, -1);
 	ft_printf("av[1] = %s\n", av[1]);
-	parse_s_file(av[ac - 1], env);
-	ft_printf("env->name = %s\n", env->name);
-	//i = env->inst;
-	ft_printf("seg1\n");
-	//l = env->inst->label;
-	while (env->inst)
+	env = parse_s_file(av[ac - 1]);
+	if (!env)
+		ft_printf("env null\n");
+	else
 	{
-		printf("INST\n");
-		while (l)
+		ft_printf("env->name = %s\n", env->name);
+		i = env->inst;
+		ft_printf("seg1\n");
+		l = i->label;
+		while (i)
 		{
-			printf("l->name = %s\n", l->name);
-			l = l->next;
+			printf("INST\n");
+			while (i->label)
+			{
+				printf("l->name = %s\n", i->label->name);
+				i->label = i->label->next;
+			}
+			ft_printf("\n");
+			i = i->next;
 		}
-		env->inst = env->inst->next;
 	}
 	return (0);
 }
