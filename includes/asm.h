@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:40:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/08 05:15:27 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/08 05:28:24 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ typedef struct		s_env
 	int				have_label;
 	t_label			*label;
 	t_inst			*inst;
-	t_inst			*inst_f;
 }					t_env;
 
 void				asm_error(int e, int l);

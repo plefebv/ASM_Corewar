@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 18:43:52 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/08 05:16:34 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/08 05:46:34 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ t_env			*parse_s_file(char *file)
 		}
 		else if (line_type == 5)
 			put_label(line, env);
-	/*	else
-			put_inst(line, env);*/
+		else if (line_type != 0 && line_type != 1 && line_type != 2)
+			put_inst(line, env);
 		free(line);
 		ft_printf("\n");
 	}

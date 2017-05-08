@@ -6,7 +6,7 @@
 #    By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/07/21 10:45:45 by plefebvr          #+#    #+#              #
-#    Updated: 2017/05/06 06:22:13 by plefebvr         ###   ########.fr        #
+#    Updated: 2017/05/08 05:59:02 by plefebvr         ###   ########.fr        #
 # **************************************************************************** #
 
 NAME = libft.a
@@ -43,6 +43,7 @@ SRC =	ft_isprint.c \
 		ft_strjoin_f2.c \
 		ft_strjoin_f.c \
 		ft_strnequ.c \
+		ft_strtrim_f.c \
 		ft_tolower.c \
 		ft_isalnum.c \
 		ft_lstdelone.c \
@@ -79,6 +80,7 @@ SRC =	ft_isprint.c \
 		ft_checkchar.c \
 		ft_strtolower.c \
 		ft_strdup_f.c \
+		ft_strsub_f.c \
 		ft_strrealloc.c \
 		get_next_line.c \
 		ft_printf.c \

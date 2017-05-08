@@ -6,13 +6,13 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 20:37:12 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/08 05:38:33 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/08 05:44:42 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+char	*ft_strsub_f(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	char	*s2;
@@ -27,6 +27,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 			i++;
 		}
 		s2[i] = '\0';
+		ft_memdel((void **)&s);
 		return (s2);
 	}
 	return (NULL);

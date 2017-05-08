@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 14:49:09 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/06 06:25:13 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/08 05:59:42 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,13 @@ char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);
 int					ft_atoi(const char *str);
 char				*ft_strtrim(char const *s);
+char				*ft_strtrim_f(char const *s);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strjoin_f1(char const *s1, char const *s2);
 char				*ft_strjoin_f2(char const *s1, char const *s2);
 char				*ft_strjoin_f(char const *s1, char const *s2);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
+char				*ft_strsub_f(char const *s, unsigned int start, size_t len);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 int					ft_strequ(char const *s1, char const *s2);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
@@ -73,6 +75,7 @@ int					ft_isdigit(int c);
 int					ft_isalpha(int c);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_strcmp(const char *s1, const char *s2);
+
 char				*ft_strnstr(const char *s1, const char *s2, size_t n);
 char				*ft_strstr(const char *s1, const char *s2);
 char				*ft_strrchr(const char *s, int c);

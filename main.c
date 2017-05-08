@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:49:13 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/08 05:18:25 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/08 06:11:55 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ int		main(int ac, char **av)
 {
 	t_env	*env;
 	t_inst 	*i;
-	t_label *l;
+	int		c = 0;
 
-	//env = (t_env **)ft_memalloc(sizeof(t_env *));
-	//init(&env);
 	env = NULL;
 	if (ac == 1)
 		asm_error(0, -1);
@@ -31,17 +29,21 @@ int		main(int ac, char **av)
 	{
 		ft_printf("env->name = %s\n", env->name);
 		i = env->inst;
-		ft_printf("seg1\n");
-		l = i->label;
 		while (i)
 		{
-			printf("INST\n");
+			printf("INST = %s \n", i->instruction);
 			while (i->label)
 			{
-				printf("l->name = %s\n", i->label->name);
+				printf("label name = %s\n", i->label->name);
 				i->label = i->label->next;
 			}
+			while (i->arg[c])
+			{
+				ft_printf("arg = |%s|\n", i->arg[c]);
+				c++;
+			}
 			ft_printf("\n");
+			c = 0;
 			i = i->next;
 		}
 	}

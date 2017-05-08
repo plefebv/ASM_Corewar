@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 18:22:58 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/08 04:49:09 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/08 05:50:03 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static void		new_inst_label(t_env *env, char *name)
 	new->label->next = NULL;
 	if (!tmp)
 	{
-		env->inst_f = new;
 		env->inst = new;
 		ft_printf("NEW \n env->inst->label->name = %s\n", env->inst->label->name);
 	}
@@ -96,8 +95,8 @@ void			put_label(char *l, t_env *env)
 	tmp = ft_strsub(t, i + 1, ft_strlen(t));
 	if (check_if_inst(tmp))
 	{
+		put_inst(tmp, env);
 		env->have_label = 0;
-		//put_inst(tmp, env);
 	}
 	ft_memdel((void **)&tmp);
 }
