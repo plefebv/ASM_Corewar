@@ -6,13 +6,13 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 22:40:39 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/06 06:16:50 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/08 04:00:18 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/asm.h"
 
-
+/*
 static t_inst		*get_last_inst(t_env *env)
 {
 	int		i;
@@ -28,10 +28,12 @@ static t_inst		*get_last_inst(t_env *env)
 static char			*get_inst_name(char *l)
 {
 	int		i;
+	char	instruction;
 
 	i = 0;
-	while (l[i] && ft_isalpha(l[i]))
+	while (l[0][i] && ft_isalpha(l[0][i]))
 		i++;
+
 
 
 }
@@ -58,4 +60,4 @@ void				put_inst(char *l, t_env *env)
 	inst->pos = get_position(env);
 	inst->next = NULL;
 	env->have_label = 0;
-}
+}*/

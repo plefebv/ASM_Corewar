@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 18:22:58 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/04/28 18:54:22 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/08 04:49:09 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,45 +19,63 @@ static void		new_inst_label(t_env *env, char *name)
 
 	tmp = env->inst;
 	new = (t_inst *)ft_memalloc(sizeof(t_inst));
-	if (!new)
+	new->label = (t_label *)ft_memalloc(sizeof(t_label));
+	if (!new || !new->label)
 		malloc_error(0);
-	new->label = ft_strdup(name);
+	new->label->name = ft_strdup(name);
+	new->label->original = 1;
+	new->label->next = NULL;
 	if (!tmp)
+	{
+		env->inst_f = new;
 		env->inst = new;
+		ft_printf("NEW \n env->inst->label->name = %s\n", env->inst->label->name);
+	}
 	else
 	{
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = new;
+		ft_printf("ADD \n env->inst->label->name = %s\n", tmp->next->label->name);
 	}
 }
  
 static void		add_label_to_label(char *l, t_env *env)
 {
 	t_inst	*tmp;
+	t_label *l_tmp;
 
 	tmp = env->inst;
-	if (!tmp)
-		test_error(0);
+	l_tmp = NULL;
+	while(tmp->next)
+		tmp = tmp->next;
+	l_tmp = tmp->label;
+	while (l_tmp->next)
+		l_tmp = l_tmp->next;
+	l_tmp->next = (t_label *)ft_memalloc(sizeof(t_label));
+	if (!l_tmp->next)
+		malloc_error(0);
 	else
 	{
-		while(tmp->next)
-			tmp = tmp->next;
-		tmp->label = ft_strjoin(tmp->label, "\n");
-		tmp->label = ft_strjoin(tmp->label, l);
-	}
+		l_tmp->next->name = ft_strdup(l);
+		ft_printf("ADD LABEL = %s\n", l_tmp->next->name);
+	}	
 }
 
 static int		check_if_inst(char *l)
 {
-	l = ft_strtrim(tmp);
-	
-	ret = get_opcode(l);
+	char *t;
+	int ret;
+
+	t = ft_strtrim(l);
+	ft_printf("t = |%s|\n", t);
+	ret = get_opcode(t);
 	if (ret == -1)
 		return (0);
 	return (ret);
 }
-char			*put_label(char *l, t_env *env)
+
+void			put_label(char *l, t_env *env)
 {
 	int		i;
 	char 	*t;
@@ -65,21 +83,21 @@ char			*put_label(char *l, t_env *env)
 
 	i = 0;
 	tmp = NULL;
-	t = ft_strstrim(l);
+	t = ft_strtrim(l);
 	while (t[i] && t[i] != LABEL_CHAR)
 		i++;
 	tmp = ft_strsub(t, 0, i);
 	if (env->have_label == 0)
 		new_inst_label(env, tmp);
-	if (env->have_label)
-		add_label_to_label(env, tmp);
+	else if (env->have_label)
+		add_label_to_label(tmp, env);
 	env->have_label++;
 	ft_memdel((void **)&tmp);
-	tmp = ft_strsub(t, i, ft_strlen(t));
+	tmp = ft_strsub(t, i + 1, ft_strlen(t));
 	if (check_if_inst(tmp))
 	{
-		put_inst(tmp, env);
 		env->have_label = 0;
+		//put_inst(tmp, env);
 	}
 	ft_memdel((void **)&tmp);
 }

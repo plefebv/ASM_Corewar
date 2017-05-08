@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:40:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/06 02:26:00 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/08 04:49:33 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ typedef struct		s_label
 
 typedef struct		s_inst
 {
-	char			*label;
+	struct s_label	*label;
 	char			*instruction;
 	char			**arg;
 	int				size;
 	int				pos;
 	int				ocp;
 	int				label_size;
-	struct s_int	*next;
+	struct s_inst	*next;
 }					t_inst;
 
 typedef struct		s_env
@@ -46,15 +46,19 @@ typedef struct		s_env
 	int				have_label;
 	t_label			*label;
 	t_inst			*inst;
+	t_inst			*inst_f;
 }					t_env;
 
 void				asm_error(int e, int l);
-void				parse_s_file(char *file);
+void				malloc_error(int e);
+void				parse_s_file(char *file, t_env *env);
 void				put_name(char *l, t_env *env);
 void				put_comment(char *l, t_env *env);
 void				put_declaration_label(char *l, t_env *env);
 void				put_inst(char *l, t_env *env);
+void				put_label(char *l, t_env *env);
 
 int					get_type_line(char *l);
+int					get_opcode(char *line);
 
 #endif

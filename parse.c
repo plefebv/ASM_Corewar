@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 18:43:52 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/06 04:31:13 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/08 04:17:06 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ static void		init(t_env *env)
 	env->name = NULL;
 	env->name_file = NULL;
 	env->comment = NULL;
+	env->inst = NULL;
 	env->nb_l = 0;
 	env->fd = -1;
 }
-void			parse_s_file(char *file)
+void			parse_s_file(char *file, t_env *env)
 {
 	char	*line;
 	int		line_type;
-	t_env	*env;
 
 
 	env = (t_env *)ft_memalloc(sizeof(t_env));
@@ -69,8 +69,8 @@ void			parse_s_file(char *file)
 		}
 		else if (line_type == 5)
 			put_label(line, env);
-		else
-			put_inst(line, env);
+	/*	else
+			put_inst(line, env);*/
 		free(line);
 		ft_printf("\n");
 	}

@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 15:33:17 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/04/24 16:40:29 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/08 04:08:16 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int		check_if_label(char *line)
 	return (-1);
 }
 
-static int		get_opcode(char *line)
+int		get_opcode(char *line)
 {
 	int		i;
 	char	*tmp;
