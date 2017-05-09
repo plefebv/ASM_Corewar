@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 22:40:39 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/09 14:54:29 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/09 17:07:57 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,50 @@ static char			*get_inst_name(char **l)
 	return (tmp);
 }
 
-static char				**get_arg(char *l)
+static void				arg_is_valid(char *arg, t_env *env)
+{
+	int		i;
+
+	i = 0;
+	while (arg[i] && arg[i] != ' ' && arg[i] != '\t' && arg[i] != '\n'
+			&& arg[i] != '\v' && arg[i] != '\r' && arg[i] != '\f')
+		i++;
+	arg[i] ? asm_error(9, env->nb_l) : 0;
+	i = 1;
+	if (arg[0] && arg[0] == 'r')
+	{
+		ft_printf("HERE 1");
+	while (arg[i] && ft_isdigit(arg[i]))
+			i++;
+	}
+	else if (arg[0] && arg[0] == DIRECT_CHAR)
+	{
+		if (arg[1] && arg[1] == LABEL_CHAR)
+		{
+			i++;
+			while (arg[i] && ft_isalnum(arg[i]))
+				i++;
+		}
+		else
+		{
+			while (arg[i] && ft_isdigit(arg[i]))
+				i++;
+		}
+	}
+	else if (arg[0] && arg[0] != LABEL_CHAR)
+	{		ft_printf("HERE 3");
+
+		while (arg[i] && ft_isdigit(arg[i]))
+			i++;
+	}
+	else
+		return ;
+	if (arg[i])
+		ft_printf("arg[i] not (null)\n");
+	arg[i] ? asm_error(9, env->nb_l) : 0;
+}
+
+static char				**get_arg(char *l, t_env *env)
 {
 	char		**ret;
 	int			i;
@@ -51,6 +94,7 @@ static char				**get_arg(char *l)
 		ft_printf("ARG[%d] = |%s|\n", i, ret[i]);
 		ret[i] = ft_strtrim_f(ret[i]);
 		ft_printf("ARG[%d] = |%s|\n", i, ret[i]);
+		arg_is_valid(ret[i], env);
 		i++;
 	}
 	return (ret);
@@ -66,7 +110,7 @@ static int			get_arg_size(char *arg, t_op *op)
 		return (2);
 }
 
-static int			get_inst_size(t_inst *inst)
+static int			get_inst_size(t_inst *inst, t_env *env)
 {
 	int		i;
 	t_op	*op;
@@ -83,6 +127,8 @@ static int			get_inst_size(t_inst *inst)
 		ret += get_arg_size(inst->arg[i], op);
 		i++;
 	}
+	if (i != op->nb_arg)
+		asm_error(8, env->nb_l);
 	return (ret);
 }
 
@@ -143,8 +189,8 @@ void				put_inst(char *l, t_env *env)
 	}
 	inst->instruction = get_inst_name(&trim);
 	ft_printf("TRIMY LINE = |%s|\n", trim);
-	inst->arg = get_arg(trim);
-	inst->size = get_inst_size(inst);
+	inst->arg = get_arg(trim, env);
+	inst->size = get_inst_size(inst, env);
 	inst->ocp = get_ocp(inst->instruction, inst->arg);
 	inst->pos = get_position(env);
 	inst->next = NULL;

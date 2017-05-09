@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:51:42 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/04/28 16:59:26 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/09 17:10:54 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ void			asm_error(int e, int l)
 		e == 5 ? ft_printf("Missing end quote for .comment") : 0;
 		e == 6 ? ft_printf("Name can't have more than 128 characters") : 0;
 		e == 7 ? ft_printf("Comment can't have more than 2048 characters") : 0;
+		e == 8 ? ft_printf("Bad number of argument") : 0;
+		e == 9 ? ft_printf("An argument is invalid") : 0;
+		e == 10 ? ft_printf("Syntax error") : 0;
 		ft_printf(" | ERROR CODE (%d) at line %d\n", e, l);
 		// FREE CE QU'IL Y A FREE MERCI BIEN MONSIEUR
 		exit(e);

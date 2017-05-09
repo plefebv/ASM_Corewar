@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:04:52 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/09 15:11:32 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/09 16:04:47 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void			cut_comment(char **line)
 	int		i;
 	int		todo;
 
-	 i = 0;
-	 todo = 0;
+	i = 0;
+	todo = 0;
 	while (line[0][i])
 	{
 		if (line[0][i] == '#' || line[0][i] == ';')
@@ -42,7 +42,7 @@ void			cut_comment(char **line)
 		}
 		i++;
 	}
-	if (todo && i > 1)
+	if (todo && i >= 1)
 	{
 		line[0] = ft_strsub_f(line[0], 0, i);
 		line[0] = ft_strtrim_f(line[0]);

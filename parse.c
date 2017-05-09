@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 18:43:52 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/09 15:15:37 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/09 17:36:15 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ t_env			*parse_s_file(char *file)
 	{
 		env->nb_l++;
 		ft_printf("GNL = |%s|  | \n", line);
+		line_type = get_type_line(line);
 		cut_comment(&line);
 		ft_printf("GNL AFTER CUT = |%s|  | ", line);
-		line_type = get_type_line(line);
 		ft_printf("Type = %d\n", line_type);
 		if (line_type == 3)
 		{
@@ -72,9 +72,11 @@ t_env			*parse_s_file(char *file)
 		}
 		else if (line_type == 5)
 			put_label(line, env);
-		else if (line_type != 0 && line_type != 1 && line_type != 2)
+		else if (line_type != -1 && line_type != 0 && line_type != 1 && line_type != 2)
 			put_inst(line, env);
 		free(line);
+		if (line_type == -1)
+			asm_error(10, env->nb_l);
 		ft_printf("\n");
 	}
 /*	while (env->inst)

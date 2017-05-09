@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 15:33:17 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/08 07:28:13 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/09 17:35:34 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static int		check_if_label(char *line)
 	{
 		if (line[i] == LABEL_CHAR && i > 0)
 		{
+			ft_printf("LINE[I] == '%d'\n", i);
 			ft_memdel((void **)&lchars);
 			return (1);
 		}
@@ -35,7 +36,8 @@ static int		check_if_label(char *line)
 			i++;
 	}
 	ft_memdel((void **)&lchars);
-	return (-1);
+	ft_printf("EEEEEEEEND\n");
+	return (0);
 }
 
 int		get_opcode(char *line)
@@ -93,7 +95,10 @@ int				get_type_line(char *l)
 										ft_strlen(COMMENT_CMD_STRING))))
 		ret = 4;
 	else if (check_if_label(line))
+	{
+		ft_printf("HEREEEEEE\n");
 		ret = 5;
+	}
 	else
 		ret = get_opcode(line);
 	ft_memdel((void **)&line);
