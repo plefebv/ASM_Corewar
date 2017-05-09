@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 14:20:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/09 14:20:12 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/09 14:44:52 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void		last_join(char *s, t_env *env)
 	while (s[i] && s[i] != '"')
 		i++;
 	tojoin = ft_strsub(s, 0, i);
-	env->comment = ft_strjoin(env->comment, "\n");
-	env->comment = ft_strjoin(env->comment, tojoin);
+	env->comment = ft_strjoin_f1(env->comment, "\n");
+	env->comment = ft_strjoin_f1(env->comment, tojoin);
 	ft_memdel((void **)&tojoin);
 }
 
@@ -64,9 +64,7 @@ static void		get_comment(char *comment, t_env *env)
 	while (tmp[i] && (tmp[i] == ' ' || tmp[i] == '\t'))
 		i++;
 	if (tmp[i] == '"')
-	{
 		i++;
-	}
 	else
 		asm_error(3, env->nb_l);
 	j = i;

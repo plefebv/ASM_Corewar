@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 14:20:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/09 14:18:59 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/09 14:29:37 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void		last_join(char *s, t_env *env)
 	while (s[i] && s[i] != '"')
 		i++;
 	tojoin = ft_strsub(s, 0, i);
-	env->name = ft_strjoin(env->name, "\n");
-	env->name = ft_strjoin(env->name, tojoin);
+	env->name = ft_strjoin_f1(env->name, "\n");
+	env->name = ft_strjoin_f1(env->name, tojoin);
 	ft_memdel((void **)&tojoin);
 }
 
