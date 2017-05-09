@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 22:40:39 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/09 13:56:26 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/09 14:54:29 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,9 @@ static int			get_ocp(char *inst, char **arg)
 	}
 	while (ft_strlen(ret) != 8)
 		ret = ft_strjoin_f1(ret, "00");
-	return (ft_atoi_base(ret, 2));
+	i = ft_atoi_base(ret, 2);
+	ft_memdel((void **)&ret);
+	return (i);
 }
 
 void				put_inst(char *l, t_env *env)

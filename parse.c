@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 18:43:52 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/09 14:15:28 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/09 15:15:37 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,9 @@ t_env			*parse_s_file(char *file)
 	while (get_next_line(env->fd, &line) > 0)	
 	{
 		env->nb_l++;
-		//cut_comment_function(&line);
-		ft_printf("GNL = |%s|  | ", line);
+		ft_printf("GNL = |%s|  | \n", line);
+		cut_comment(&line);
+		ft_printf("GNL AFTER CUT = |%s|  | ", line);
 		line_type = get_type_line(line);
 		ft_printf("Type = %d\n", line_type);
 		if (line_type == 3)

@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:40:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/09 14:14:51 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/09 15:04:02 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void				put_comment(char *l, t_env *env);
 void				put_declaration_label(char *l, t_env *env);
 void				put_inst(char *l, t_env *env);
 void				put_label(char *l, t_env *env);
+void				cut_comment(char **line);
 
 int					get_type_line(char *l);
 int					get_opcode(char *line);
