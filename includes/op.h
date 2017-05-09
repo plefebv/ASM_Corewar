@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2017/05/06 02:31:41 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/09 13:48:37 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ typedef struct		s_op
 	int		opcode;
 	int		cycle;
 	char	*des;
-	int		need_cod;
+	int		need_oc;
 	int		label_size;
 }					t_op;
 

@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:40:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/08 07:21:58 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/09 14:14:51 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void				put_label(char *l, t_env *env);
 
 int					get_type_line(char *l);
 int					get_opcode(char *line);
+int					contain_quote(char *s);
 t_op				*get_optab(char *name);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/15 17:35:10 by plefebvr          #+#    #+#              #
-#    Updated: 2017/04/27 22:40:32 by plefebvr         ###   ########.fr        #
+#    Updated: 2017/05/09 14:15:04 by plefebvr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ CFLAGS	= -Wall -Wextra
 FILES	= 	main.c \
 			error.c \
 			parse.c \
+			utils.c \
 			type_of_line.c \
 			put_name.c \
 			put_comment.c \

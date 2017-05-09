@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 14:49:09 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/08 05:59:42 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/09 14:02:19 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int					ft_isdigit(int c);
 int					ft_isalpha(int c);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_strcmp(const char *s1, const char *s2);
+int					ft_power(int nbr, int power);
 
 char				*ft_strnstr(const char *s1, const char *s2, size_t n);
 char				*ft_strstr(const char *s1, const char *s2);
@@ -100,5 +101,6 @@ void				ft_putendl(char const *s);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putchar(char c);
 int					ft_checkchar(const char *str, char c);
+int					ft_atoi_base(char *str, int base);
 
 #endif

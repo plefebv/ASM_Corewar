@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 18:43:52 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/08 05:46:34 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/09 14:15:28 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static void		init(t_env *env)
 	env->nb_l = 0;
 	env->fd = -1;
 }
+
 t_env			*parse_s_file(char *file)
 {
 	t_env	*env;
