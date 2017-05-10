@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 22:40:39 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/09 17:07:57 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/10 15:55:32 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,20 @@ static char			*get_inst_name(char **l)
 	return (tmp);
 }
 
+static void				process_valid_arg(char *arg, int *i, int dig)
+{
+	if (dig)
+	{
+		while (arg[*i] && ft_isdigit(arg[*i]))
+			(*i)++;
+	}
+	else
+	{
+		while (arg[*i] && ft_isalnum(arg[*i]))
+			(*i)++;
+	}
+}
+
 static void				arg_is_valid(char *arg, t_env *env)
 {
 	int		i;
@@ -45,39 +59,25 @@ static void				arg_is_valid(char *arg, t_env *env)
 	while (arg[i] && arg[i] != ' ' && arg[i] != '\t' && arg[i] != '\n'
 			&& arg[i] != '\v' && arg[i] != '\r' && arg[i] != '\f')
 		i++;
-	arg[i] ? asm_error(9, env->nb_l) : 0;
+	arg[i] ? asm_error(9, env) : 0;
 	i = 1;
 	if (arg[0] && arg[0] == 'r')
-	{
-		ft_printf("HERE 1");
-	while (arg[i] && ft_isdigit(arg[i]))
-			i++;
-	}
+		process_valid_arg(arg, &i, 1);
 	else if (arg[0] && arg[0] == DIRECT_CHAR)
 	{
 		if (arg[1] && arg[1] == LABEL_CHAR)
 		{
 			i++;
-			while (arg[i] && ft_isalnum(arg[i]))
-				i++;
+			process_valid_arg(arg, &i, 0);
 		}
 		else
-		{
-			while (arg[i] && ft_isdigit(arg[i]))
-				i++;
-		}
+			process_valid_arg(arg, &i, 1);
 	}
-	else if (arg[0] && arg[0] != LABEL_CHAR)
-	{		ft_printf("HERE 3");
-
-		while (arg[i] && ft_isdigit(arg[i]))
-			i++;
-	}
+	else if (arg[0] && arg[0] != LABEL_CHAR)	
+			process_valid_arg(arg, &i, 1);
 	else
 		return ;
-	if (arg[i])
-		ft_printf("arg[i] not (null)\n");
-	arg[i] ? asm_error(9, env->nb_l) : 0;
+	arg[i] ? asm_error(9, env) : 0;
 }
 
 static char				**get_arg(char *l, t_env *env)
@@ -128,7 +128,7 @@ static int			get_inst_size(t_inst *inst, t_env *env)
 		i++;
 	}
 	if (i != op->nb_arg)
-		asm_error(8, env->nb_l);
+		asm_error(8, env);
 	return (ret);
 }
 

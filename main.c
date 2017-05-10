@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:49:13 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/09 14:03:55 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/10 15:21:49 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		main(int ac, char **av)
 
 	env = NULL;
 	if (ac == 1)
-		asm_error(0, -1);
+		asm_error(0, NULL);
 	ft_printf("av[1] = %s\n", av[1]);
 	env = parse_s_file(av[ac - 1]);
 	if (!env)

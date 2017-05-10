@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:51:42 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/09 17:10:54 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/10 15:22:39 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void			test_error(int e)
 	exit(e);
 }
 
-void			asm_error(int e, int l)
+void			asm_error(int e, t_env *env)
 {
 		!e ? ft_printf("Put at least one s file in argument") : 0;
 		e == 1 ? ft_printf("The file must be a .s") : 0;
@@ -31,7 +31,7 @@ void			asm_error(int e, int l)
 		e == 8 ? ft_printf("Bad number of argument") : 0;
 		e == 9 ? ft_printf("An argument is invalid") : 0;
 		e == 10 ? ft_printf("Syntax error") : 0;
-		ft_printf(" | ERROR CODE (%d) at line %d\n", e, l);
+		ft_printf(" | ERROR CODE (%d) at line %d\n", e, env ? env->nb_l : -1);
 		// FREE CE QU'IL Y A FREE MERCI BIEN MONSIEUR
 		exit(e);
 }

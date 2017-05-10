@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 14:20:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/09 14:44:52 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/10 15:20:26 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void		comment_process(t_env *env)
 		}
 	}
 	if (!c)
-		asm_error(5, env->nb_l);
+		asm_error(5, env);
 }
 
 static void		get_comment(char *comment, t_env *env)
@@ -66,7 +66,7 @@ static void		get_comment(char *comment, t_env *env)
 	if (tmp[i] == '"')
 		i++;
 	else
-		asm_error(3, env->nb_l);
+		asm_error(3, env);
 	j = i;
 	while (tmp[j] && tmp[j] != '"')
 		j++;
@@ -87,5 +87,5 @@ void			put_comment(char *l, t_env *env)
 	if (!(ft_strncmp(trim, COMMENT_CMD_STRING, ft_strlen(COMMENT_CMD_STRING))))
 			get_comment(trim, env);
 	if (ft_strlen(env->comment) > COMMENT_LENGTH)
-		asm_error(7, env->nb_l);
+		asm_error(7, env);
 }

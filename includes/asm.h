@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:40:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/09 15:04:02 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/10 15:16:04 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct		s_env
 	t_inst			*inst;
 }					t_env;
 
-void				asm_error(int e, int l);
+void				asm_error(int e, t_env *env);
 void				malloc_error(int e);
 t_env				*parse_s_file(char *file);
 void				put_name(char *l, t_env *env);
