@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:49:13 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/10 16:33:11 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/10 18:16:49 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ int		main(int ac, char **av)
 				printf("label name = %s\n", i->label->name);
 				i->label = i->label->next;
 			}
-			while (i->arg[c])
+			while (i->arg)
 			{
-				ft_printf("arg = |%s|\n", i->arg[c]);
-				c++;
+				ft_printf("arg = |%s|\n", i->arg->name);
+				i->arg = i->arg->next;
 			}
 			ft_printf("total octal size = %d\n",  i->size);
 			ft_printf("position = %d\n", i->pos);

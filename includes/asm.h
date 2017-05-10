@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:40:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/10 16:32:28 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/10 18:48:42 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,22 @@ typedef struct		s_label
 	struct s_label	*next;
 }					t_label;
 
+typedef struct		s_arg
+{
+	char			*name;
+	int				size;
+	int				is_label;
+	char			*label;
+	int				is_valid;
+	int				label_pos;
+	struct s_arg	*next;
+}					t_arg;
+
 typedef struct		s_inst
 {
 	struct s_label	*label;
 	char			*instruction;
-	char			**arg;
+	struct s_arg	*arg;
 	int				size;
 	int				pos;
 	int				ocp;

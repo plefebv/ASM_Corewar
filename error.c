@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:51:42 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/10 15:22:39 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/10 17:21:04 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void			asm_error(int e, t_env *env)
 		e == 8 ? ft_printf("Bad number of argument") : 0;
 		e == 9 ? ft_printf("An argument is invalid") : 0;
 		e == 10 ? ft_printf("Syntax error") : 0;
+		e == 11 ? ft_printf("Double ':' or '%%' in argument") : 0;
 		ft_printf(" | ERROR CODE (%d) at line %d\n", e, env ? env->nb_l : -1);
 		// FREE CE QU'IL Y A FREE MERCI BIEN MONSIEUR
 		exit(e);

@@ -6,12 +6,55 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 22:40:39 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/10 16:00:12 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/10 19:10:18 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/asm.h"
 
+
+static int			get_position(t_env *env)
+{
+	int		pos;
+	t_inst	*tmp;
+
+	pos = 0;
+	tmp = env->inst;
+	while (tmp->next)
+	{
+		pos += tmp->size;
+		tmp = tmp->next;
+	}
+	return (pos);
+}
+
+static int			get_ocp(char *inst, char **arg)
+{
+	t_op	*op;
+	int		i;
+	char	*ret;
+
+	i = 0;
+	op = get_optab(inst);
+	if (op && op->need_oc == 0)
+		return (-1);
+	ret = ft_strdup("");
+	while (arg[i])
+	{
+		if (arg[i][0] == 'r')
+			ret = ft_strjoin_f1(ret, "01");
+		else if (arg[i][0] == DIRECT_CHAR)
+			ret = ft_strjoin_f1(ret, "10");
+		else
+			ret = ft_strjoin_f1(ret, "11");
+		i++;
+	}
+	while (ft_strlen(ret) != 8)
+		ret = ft_strjoin_f1(ret, "00");
+	i = ft_atoi_base(ret, 2);
+	ft_memdel((void **)&ret);
+	return (i);
+}
 
 static t_inst		*get_last_inst(t_env *env)
 {
@@ -80,25 +123,44 @@ static void				arg_syntax_is_valid(char *arg, t_env *env)
 	arg[i] ? asm_error(9, env) : 0;
 }
 
-static char				**get_arg(char *l, t_env *env)
+static int				is_label(char *name)
 {
-	char		**ret;
-	int			i;
+	if (name[0] && name[0] == ':')
+		return (1);
+	if (name[0] && name[0] == '%' && name[1] && name[1] == ':')
+		return (1);
+	else
+		return (0);
+}
 
+static char				*grep_label(char *name, t_env *env)
+{
+	int			i;
+	int			j;
+	int			percentage;
+	int			double_dot;
+
+	percentage = 0;
+	double_dot = 0;
 	i = 0;
-	if (ft_strlen(l) <= 1)
-		return (NULL);
-	ret = ft_strsplit(l, SEPARATOR_CHAR);
-	while (ret[i])
+	j = 0;
+	while (name[i])
 	{
-		ft_printf("ARG[%d] = |%s|\n", i, ret[i]);
-		ret[i] = ft_strtrim_f(ret[i]);
-		ft_printf("ARG[%d] = |%s|\n", i, ret[i]);
-		arg_syntax_is_valid(ret[i], env);
-		
+		if (name[i] == '%')
+		{
+			j++;
+			percentage++;
+		}
+		if (name[i] == ':')
+		{
+			j++;
+			double_dot++;
+		}
 		i++;
 	}
-	return (ret);
+	if (!double_dot || double_dot > 1 || percentage > 1)
+		asm_error(11, env);
+	return (ft_strsub(name, j, ft_strlen(name) - j - 1));
 }
 
 static int			get_arg_size(char *arg, t_op *op)
@@ -111,69 +173,77 @@ static int			get_arg_size(char *arg, t_op *op)
 		return (2);
 }
 
+static void				add_arg(t_inst *inst, char *arg, t_op *op, t_env *env)
+{
+	t_arg		*tmp;
+
+	tmp = inst->arg;
+	if (!tmp)
+	{
+		inst->arg = (t_arg *)ft_memalloc(sizeof(t_arg));
+		!(inst->arg) ? malloc_error(0) : 0;
+		tmp = inst->arg;
+	}
+	else
+	{
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = (t_arg *)ft_memalloc(sizeof(t_arg));
+		tmp = tmp->next;
+		!(tmp) ? malloc_error(0) : 0;
+	}
+	tmp->name = ft_strdup(arg);
+	tmp->size = get_arg_size(arg, op);
+	tmp->is_label = is_label(tmp->name);
+	tmp->label = tmp->is_label ? grep_label(tmp->name, env) : NULL;
+}
+
+static void			get_arg(char *l, t_inst *inst, t_env *env)
+{
+	char		**ret;
+	int			i;
+	t_op		*op;
+
+	op = get_optab(inst->instruction);
+	i = 0;
+	if (ft_strlen(l) <= 1)
+		return ;
+	ret = ft_strsplit(l, SEPARATOR_CHAR);
+	while (ret[i])
+	{
+		ret[i] = ft_strtrim_f(ret[i]);
+		arg_syntax_is_valid(ret[i], env);
+		add_arg(inst, ret[i], op, env);
+		i++;
+	}
+	//free ret;
+}
+
 static int			get_inst_size(t_inst *inst, t_env *env)
 {
 	int		i;
 	t_op	*op;
 	int		ret;
+	t_arg	*arg;
 
 	i = 0;
 	ret = 1;
 	if (inst->arg == NULL)
+	{
 		return (0);
+	}	
+	arg = inst->arg;
 	op = get_optab(inst->instruction);
 	ret += op->need_oc;
-	while (inst->arg[i])
+	while (arg)
 	{
-		ret += get_arg_size(inst->arg[i], op);
+		ret += arg->size;
+		arg = arg->next;
 		i++;
 	}
 	if (i != op->nb_arg)
 		asm_error(8, env);
 	return (ret);
-}
-
-static int			get_position(t_env *env)
-{
-	int		pos;
-	t_inst	*tmp;
-
-	pos = 0;
-	tmp = env->inst;
-	while (tmp->next)
-	{
-		pos += tmp->size;
-		tmp = tmp->next;
-	}
-	return (pos);
-}
-
-static int			get_ocp(char *inst, char **arg)
-{
-	t_op	*op;
-	int		i;
-	char	*ret;
-
-	i = 0;
-	op = get_optab(inst);
-	if (op && op->need_oc == 0)
-		return (-1);
-	ret = ft_strdup("");
-	while (arg[i])
-	{
-		if (arg[i][0] == 'r')
-			ret = ft_strjoin_f1(ret, "01");
-		else if (arg[i][0] == DIRECT_CHAR)
-			ret = ft_strjoin_f1(ret, "10");
-		else
-			ret = ft_strjoin_f1(ret, "11");
-		i++;
-	}
-	while (ft_strlen(ret) != 8)
-		ret = ft_strjoin_f1(ret, "00");
-	i = ft_atoi_base(ret, 2);
-	ft_memdel((void **)&ret);
-	return (i);
 }
 
 void				put_inst(char *l, t_env *env)
@@ -187,12 +257,14 @@ void				put_inst(char *l, t_env *env)
 	{
 		inst->next = (t_inst *)ft_memalloc(sizeof(t_inst));
 		inst = inst->next;
+		inst->instruction = NULL;
+		inst->arg = NULL;
 	}
 	inst->instruction = get_inst_name(&trim);
 	ft_printf("TRIMY LINE = |%s|\n", trim);
-	inst->arg = get_arg(trim, env);
+	get_arg(trim, inst, env);
 	inst->size = get_inst_size(inst, env);
-	inst->ocp = get_ocp(inst->instruction, inst->arg);
+//	inst->ocp = get_ocp(inst->instruction, inst->arg);
 	inst->pos = get_position(env);
 	inst->next = NULL;
 	env->have_label = 0;

@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 18:43:52 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/10 15:19:36 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/10 18:15:40 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void		init(t_env *env)
 	env->name = NULL;
 	env->name_file = NULL;
 	env->comment = NULL;
+	env->header = NULL;
 	env->inst = NULL;
 	env->nb_l = 0;
 	env->fd = -1;
