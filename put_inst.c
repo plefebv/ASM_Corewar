@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 22:40:39 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/10 15:55:32 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/10 16:00:12 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void				process_valid_arg(char *arg, int *i, int dig)
 	}
 }
 
-static void				arg_is_valid(char *arg, t_env *env)
+static void				arg_syntax_is_valid(char *arg, t_env *env)
 {
 	int		i;
 
@@ -94,7 +94,8 @@ static char				**get_arg(char *l, t_env *env)
 		ft_printf("ARG[%d] = |%s|\n", i, ret[i]);
 		ret[i] = ft_strtrim_f(ret[i]);
 		ft_printf("ARG[%d] = |%s|\n", i, ret[i]);
-		arg_is_valid(ret[i], env);
+		arg_syntax_is_valid(ret[i], env);
+		
 		i++;
 	}
 	return (ret);

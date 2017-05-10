@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:40:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/10 15:16:04 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/10 16:32:28 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct		s_env
 	char			*name;
 	char			*name_file;
 	char			*comment;
+	t_header		*header;
 	int				nb_l;
 	int				fd;
 	int				have_label;
@@ -57,6 +58,7 @@ void				put_declaration_label(char *l, t_env *env);
 void				put_inst(char *l, t_env *env);
 void				put_label(char *l, t_env *env);
 void				cut_comment(char **line);
+void				generate_header(t_env *env);
 
 int					get_type_line(char *l);
 int					get_opcode(char *line);
