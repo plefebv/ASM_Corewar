@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 16:22:51 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/11 23:48:39 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/12 03:27:21 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,4 @@ void			generate_header(t_env *env)
 		env->header->comment[i] = env->comment[i];
 		i++;
 	}
-	print_everything(env); // A JARTER
 }

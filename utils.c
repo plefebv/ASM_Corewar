@@ -6,11 +6,31 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:04:52 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/09 16:04:47 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/12 03:51:26 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/asm.h"
+
+/*
+** reverse 4 bytes 11000110 00011111 00111111 11111100
+*/
+unsigned int	ft_endian_4_bytes(unsigned int n)
+{
+		return ((n >> 24) | ((n & 0xff0000) >> 8) | ((n & 0xff00) << 8) |
+						((n & 0xff) << 24));
+}
+
+/*
+** first convert n to 2 bytes length
+** reverse 2 bytes 11000011 00110011
+*/
+
+unsigned int	ft_endian_2_bytes(unsigned int n)
+{
+	n &= 0xffff;
+	return ((n >> 8) | ((n & 0xff) << 8));
+}
 
 int			contain_quote(char *s)
 {

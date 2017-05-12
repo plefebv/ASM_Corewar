@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:51:42 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/12 02:58:03 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/12 03:42:43 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void			asm_error(int e, t_env *env, int l)
 		e == 10 ? ft_printf("Syntax error") : 0;
 		e == 11 ? ft_printf("Double ':' or '%%' in argument") : 0;
 		e == 12 ? ft_printf("Label not found in argument") : 0;
+		e == 13 ? ft_printf("Error to create the cor file") : 0;
 		if (!l)
 			ft_printf(" at line %d | code error (%d)\n", env ? env->nb_l : -1, e);
 		else

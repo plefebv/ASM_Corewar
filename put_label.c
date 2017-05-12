@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 18:22:58 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/08 05:50:03 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/12 03:27:54 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,12 @@ static void		new_inst_label(t_env *env, char *name)
 	new->label->original = 1;
 	new->label->next = NULL;
 	if (!tmp)
-	{
 		env->inst = new;
-		ft_printf("NEW \n env->inst->label->name = %s\n", env->inst->label->name);
-	}
 	else
 	{
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = new;
-		ft_printf("ADD \n env->inst->label->name = %s\n", tmp->next->label->name);
 	}
 }
  
@@ -55,10 +51,7 @@ static void		add_label_to_label(char *l, t_env *env)
 	if (!l_tmp->next)
 		malloc_error(0);
 	else
-	{
 		l_tmp->next->name = ft_strdup(l);
-		ft_printf("ADD LABEL = %s\n", l_tmp->next->name);
-	}	
 }
 
 static int		check_if_inst(char *l)
@@ -67,7 +60,6 @@ static int		check_if_inst(char *l)
 	int ret;
 
 	t = ft_strtrim(l);
-	ft_printf("t = |%s|\n", t);
 	ret = get_opcode(t);
 	if (ret == -1)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 22:40:39 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/12 03:17:22 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/12 03:24:54 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ static char			*get_inst_name(char **l)
 	tmp = ft_strsub(l[0], 0, i);
 	l[0] = ft_strsub_f(l[0], i, ft_strlen(l[0]) - 1);
 	l[0] = ft_strtrim_f(l[0]);
-	ft_printf("GET_INST_NAME = %s\n LINE = |%s|\n", tmp, l[0]);
 	return (tmp);
 }
 
@@ -187,7 +186,6 @@ static void				add_arg(t_inst *inst, char *arg, t_op *op, t_env *env)
 	}
 	else
 	{
-		ft_printf("ADD ADD \n");
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = (t_arg *)ft_memalloc(sizeof(t_arg));
@@ -214,7 +212,6 @@ static void			get_arg(char *l, t_inst *inst, t_env *env)
 	ret = ft_strsplit(l, SEPARATOR_CHAR);
 	while (ret[i])
 	{
-		ft_printf("ret[i] == %s\n", ret[i]);
 		ret[i] = ft_strtrim_f(ret[i]);
 		arg_syntax_is_valid(ret[i], env);
 		add_arg(inst, ret[i], op, env);
@@ -265,7 +262,6 @@ void				put_inst(char *l, t_env *env)
 		inst->arg = NULL;
 	}
 	inst->instruction = get_inst_name(&trim);
-	ft_printf("TRIMY LINE = |%s|\n", trim);
 	get_arg(trim, inst, env);
 	inst->size = get_inst_size(inst, env);
 	inst->ocp = get_ocp(inst->instruction, inst->arg);

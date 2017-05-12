@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 18:43:52 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/12 00:15:58 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/12 04:21:08 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@ static void		put_file_name(char *file, t_env *env)
 	char		*ext;
 	char		*tmp_name;
 
-	env = (t_env *)ft_memalloc(sizeof(t_env));
 	tmp_name = ft_strsub(file, 0, ft_strlen(file) - 2);
 	ext = ft_strsub(file, ft_strlen(file) - 2, ft_strlen(file) - 1);
 	if (ft_strcmp(ext, ".s") == 0)
-		env->name_file = tmp_name;
+		env->name_file = ft_strdup_f(tmp_name);
 	else
 	{
 		ft_memdel((void **)&ext);
@@ -56,21 +55,12 @@ t_env			*parse_s_file(char *file)
 	while (get_next_line(env->fd, &line) > 0)	
 	{
 		env->nb_l++;
-		ft_printf("GNL = |%s|  | \n", line);
 		line_type = get_type_line(line);
 		cut_comment(&line);
-		ft_printf("GNL AFTER CUT = |%s|  | ", line);
-		ft_printf("Type = %d\n", line_type);
 		if (line_type == 3)
-		{
 			put_name(line, env);
-			ft_printf("env->name = |%s|\n", env->name);
-		}
 		else if (line_type == 4)
-		{
 			put_comment(line, env);
-			ft_printf("env->comment  = |%s|\n", env->comment);
-		}
 		else if (line_type == 5)
 			put_label(line, env);
 		else if (line_type != -1 && line_type != 0 && line_type != 1 && line_type != 2)
@@ -78,18 +68,6 @@ t_env			*parse_s_file(char *file)
 		free(line);
 		if (line_type == -1)
 			asm_error(10, env, 0);
-		ft_printf("\n");
 	}
-/*	while (env->inst)
-	{
-		ft_printf("INST = ");
-		while (env->inst->label)
-		{
-			ft_printf("|%s|\n", env->inst->label->name);
-			env->inst->label = env->inst->label->next;
-		}
-		ft_printf("\n");
-		env->inst = env->inst->next;
-	}*/
 	return (env);
 }
