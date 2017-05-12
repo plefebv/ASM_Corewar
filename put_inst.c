@@ -137,11 +137,11 @@ static char				*grep_label(char *name, t_env *env)
 {
 	int			i;
 	int			j;
-	int			percentage;
-	int			double_dot;
+	int			direct;
+	int			label;
 
-	percentage = 0;
-	double_dot = 0;
+	direct = 0;
+	label = 0;
 	i = 0;
 	j = 0;
 	while (name[i])
@@ -149,16 +149,16 @@ static char				*grep_label(char *name, t_env *env)
 		if (name[i] == DIRECT_CHAR)
 		{
 			j++;
-			percentage++;
+			direct++;
 		}
 		if (name[i] == LABEL_CHAR)
 		{
 			j++;
-			double_dot++;
+			label++;
 		}
 		i++;
 	}
-	if (!double_dot || double_dot > 1 || percentage > 1)
+	if (!label || label > 1 || direct > 1)
 		asm_error(11, env, 0);
 	return (ft_strsub(name, j, ft_strlen(name) - j));
 }
