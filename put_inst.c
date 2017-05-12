@@ -125,9 +125,9 @@ static void				arg_syntax_is_valid(char *arg, t_env *env)
 
 static int				is_label(char *name)
 {
-	if (name[0] && name[0] == ':')
+	if (name[0] && name[0] == LABEL_CHAR)
 		return (1);
-	if (name[0] && name[0] == '%' && name[1] && name[1] == ':')
+	if (name[0] && name[0] == DIRECT_CHAR && name[1] && name[1] == LABEL_CHAR)
 		return (1);
 	else
 		return (0);
@@ -146,12 +146,12 @@ static char				*grep_label(char *name, t_env *env)
 	j = 0;
 	while (name[i])
 	{
-		if (name[i] == '%')
+		if (name[i] == DIRECT_CHAR)
 		{
 			j++;
 			percentage++;
 		}
-		if (name[i] == ':')
+		if (name[i] == LABEL_CHAR)
 		{
 			j++;
 			double_dot++;
