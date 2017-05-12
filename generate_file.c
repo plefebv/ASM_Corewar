@@ -1,43 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.c                                           :+:      :+:    :+:   */
+/*   generate_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/10 16:22:51 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/11 23:48:39 by plefebvr         ###   ########.fr       */
+/*   Created: 2017/05/11 23:36:19 by plefebvr          #+#    #+#             */
+/*   Updated: 2017/05/12 02:50:02 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/asm.h"
 
-void			generate_header(t_env *env)
+static void			check_last_inst(t_env *env)
 {
-	int			i;
 	t_inst		*inst;
 
-	i = 0;
-	env->header = (t_header *)ft_memalloc(sizeof(t_header));
-	!(env->header) ? malloc_error(0) : 0;
 	inst = env->inst;
-	env->header->magic = COREWAR_EXEC_MAGIC;
-	env->header->prog_size = 0;
-	while (env->name[i])
-	{
-		env->header->prog_name[i] = env->name[i];
-		i++;
-	}
-	while (inst)
-	{
-		env->header->prog_size += inst->size;
+	while (inst->next)
 		inst = inst->next;
-	}
-	i = 0;
-	while (env->comment[i])
-	{
-		env->header->comment[i] = env->comment[i];
-		i++;
-	}
-	print_everything(env); // A JARTER
+	if (!inst->instruction)
+		inst->pos = env->header->prog_size;
+}
+
+void				generate_file(t_env *env)
+{
+	generate_header(env);
+	check_last_inst(env);
+	print_everything(env);
+	check_if_label_exist(env);
 }

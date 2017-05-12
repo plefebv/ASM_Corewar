@@ -1,11 +1,8 @@
-.name "name"
-
-.comment "comment"
-
-l2:sti	r1,14,%0
-	and	r1,%:label,r1;
-label:	live	%:l2
+.name "zork"
+.comment "just a basic living prog"
+		
+l2:	sti	r1,%:vide,%0
+	and	r1,%0,r1
+label:	live	%1
 	zjmp	%:label
-	;
-l3:	sti	r1,%:l2,%0
-	and	r1,%:l2,r1
+vide:

@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 22:40:39 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/10 19:10:18 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/12 00:17:06 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,27 @@ static int			get_position(t_env *env)
 	return (pos);
 }
 
-static int			get_ocp(char *inst, char **arg)
+static int			get_ocp(char *inst, t_arg *arg)
 {
 	t_op	*op;
-	int		i;
 	char	*ret;
+	t_arg	*tmp;
+	int		i;
 
-	i = 0;
+	tmp = arg;
 	op = get_optab(inst);
 	if (op && op->need_oc == 0)
 		return (-1);
 	ret = ft_strdup("");
-	while (arg[i])
+	while (tmp)
 	{
-		if (arg[i][0] == 'r')
+		if (tmp->name[0] == 'r')
 			ret = ft_strjoin_f1(ret, "01");
-		else if (arg[i][0] == DIRECT_CHAR)
+		else if (tmp->name[0] == DIRECT_CHAR)
 			ret = ft_strjoin_f1(ret, "10");
 		else
 			ret = ft_strjoin_f1(ret, "11");
-		i++;
+		tmp = tmp->next;
 	}
 	while (ft_strlen(ret) != 8)
 		ret = ft_strjoin_f1(ret, "00");
@@ -102,7 +103,7 @@ static void				arg_syntax_is_valid(char *arg, t_env *env)
 	while (arg[i] && arg[i] != ' ' && arg[i] != '\t' && arg[i] != '\n'
 			&& arg[i] != '\v' && arg[i] != '\r' && arg[i] != '\f')
 		i++;
-	arg[i] ? asm_error(9, env) : 0;
+	arg[i] ? asm_error(9, env, 0) : 0;
 	i = 1;
 	if (arg[0] && arg[0] == 'r')
 		process_valid_arg(arg, &i, 1);
@@ -120,7 +121,7 @@ static void				arg_syntax_is_valid(char *arg, t_env *env)
 			process_valid_arg(arg, &i, 1);
 	else
 		return ;
-	arg[i] ? asm_error(9, env) : 0;
+	arg[i] ? asm_error(9, env, 0) : 0;
 }
 
 static int				is_label(char *name)
@@ -159,8 +160,8 @@ static char				*grep_label(char *name, t_env *env)
 		i++;
 	}
 	if (!double_dot || double_dot > 1 || percentage > 1)
-		asm_error(11, env);
-	return (ft_strsub(name, j, ft_strlen(name) - j - 1));
+		asm_error(11, env, 0);
+	return (ft_strsub(name, j, ft_strlen(name) - j));
 }
 
 static int			get_arg_size(char *arg, t_op *op)
@@ -196,6 +197,7 @@ static void				add_arg(t_inst *inst, char *arg, t_op *op, t_env *env)
 	tmp->size = get_arg_size(arg, op);
 	tmp->is_label = is_label(tmp->name);
 	tmp->label = tmp->is_label ? grep_label(tmp->name, env) : NULL;
+	tmp->line = env->nb_l;
 }
 
 static void			get_arg(char *l, t_inst *inst, t_env *env)
@@ -242,7 +244,7 @@ static int			get_inst_size(t_inst *inst, t_env *env)
 		i++;
 	}
 	if (i != op->nb_arg)
-		asm_error(8, env);
+		asm_error(8, env, 0);
 	return (ret);
 }
 
@@ -264,7 +266,7 @@ void				put_inst(char *l, t_env *env)
 	ft_printf("TRIMY LINE = |%s|\n", trim);
 	get_arg(trim, inst, env);
 	inst->size = get_inst_size(inst, env);
-//	inst->ocp = get_ocp(inst->instruction, inst->arg);
+	inst->ocp = get_ocp(inst->instruction, inst->arg);
 	inst->pos = get_position(env);
 	inst->next = NULL;
 	env->have_label = 0;

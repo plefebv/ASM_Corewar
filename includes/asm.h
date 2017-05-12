@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:40:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/10 18:48:42 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/12 01:38:27 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct		s_arg
 	char			*label;
 	int				is_valid;
 	int				label_pos;
+	int				line;
 	struct s_arg	*next;
 }					t_arg;
 
@@ -60,7 +61,9 @@ typedef struct		s_env
 	t_inst			*inst;
 }					t_env;
 
-void				asm_error(int e, t_env *env);
+void				print_everything(t_env *env);
+
+void				asm_error(int e, t_env *env, int l);
 void				malloc_error(int e);
 t_env				*parse_s_file(char *file);
 void				put_name(char *l, t_env *env);
@@ -69,11 +72,14 @@ void				put_declaration_label(char *l, t_env *env);
 void				put_inst(char *l, t_env *env);
 void				put_label(char *l, t_env *env);
 void				cut_comment(char **line);
+void				generate_file(t_env *env);
 void				generate_header(t_env *env);
+void				check_if_label_exist(t_env *env);
 
 int					get_type_line(char *l);
 int					get_opcode(char *line);
 int					contain_quote(char *s);
 t_op				*get_optab(char *name);
+unsigned int		ft_endian(unsigned int n);
 
 #endif

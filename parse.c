@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 18:43:52 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/10 18:15:40 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/12 00:15:58 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void		put_file_name(char *file, t_env *env)
 	{
 		ft_memdel((void **)&ext);
 		ft_memdel((void **)&tmp_name);
-		asm_error(1, NULL);
+		asm_error(1, NULL, 0);
 	}
 	ft_memdel((void **)&ext);
 }
@@ -77,7 +77,7 @@ t_env			*parse_s_file(char *file)
 			put_inst(line, env);
 		free(line);
 		if (line_type == -1)
-			asm_error(10, env);
+			asm_error(10, env, 0);
 		ft_printf("\n");
 	}
 /*	while (env->inst)

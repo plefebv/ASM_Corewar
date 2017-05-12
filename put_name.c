@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 14:20:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/10 15:21:30 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/12 00:24:57 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void		name_process(t_env *env)
 		free(line);
 	}
 	if (!c)
-		asm_error(4, env);
+		asm_error(4, env, 0);
 }
 
 static void		get_name(char *name, t_env *env)
@@ -69,7 +69,7 @@ static void		get_name(char *name, t_env *env)
 	else
 	{
 		ft_memdel((void **)tmp);
-		asm_error(2, env);
+		asm_error(2, env, 0);
 	}
 	j = i;
 	while (tmp[j] && tmp[j] != '"')
@@ -97,6 +97,6 @@ void			put_name(char *l, t_env *env)
 	if (ft_strlen(env->name) > PROG_NAME_LENGTH)
 	{
 		ft_memdel((void **)&trim);
-		asm_error(6, env);
+		asm_error(6, env, 0);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:51:42 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/10 17:21:04 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/12 00:13:24 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void			test_error(int e)
 	exit(e);
 }
 
-void			asm_error(int e, t_env *env)
+void			asm_error(int e, t_env *env, int l)
 {
 		!e ? ft_printf("Put at least one s file in argument") : 0;
 		e == 1 ? ft_printf("The file must be a .s") : 0;
@@ -32,7 +32,11 @@ void			asm_error(int e, t_env *env)
 		e == 9 ? ft_printf("An argument is invalid") : 0;
 		e == 10 ? ft_printf("Syntax error") : 0;
 		e == 11 ? ft_printf("Double ':' or '%%' in argument") : 0;
-		ft_printf(" | ERROR CODE (%d) at line %d\n", e, env ? env->nb_l : -1);
+		e == 12 ? ft_printf("Label not found in argument") : 0;
+		if (!l)
+			ft_printf(" | ERROR CODE (%d) at line %d\n", e, env ? env->nb_l : -1);
+		else
+			ft_printf(" | ERROR CODE (%d) at line %d\n", e, l);
 		// FREE CE QU'IL Y A FREE MERCI BIEN MONSIEUR
 		exit(e);
 }

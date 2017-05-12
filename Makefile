@@ -6,7 +6,7 @@
 #    By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/15 17:35:10 by plefebvr          #+#    #+#              #
-#    Updated: 2017/05/10 16:23:35 by plefebvr         ###   ########.fr        #
+#    Updated: 2017/05/11 23:53:50 by plefebvr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,10 @@ FILES	= 	main.c \
 			put_comment.c \
 			put_label.c \
 			put_inst.c \
-			header.c
+			generate_file.c \
+			check_label.c \
+			header.c \
+			build.c
 
 LIB	= -L libft -lft
 
