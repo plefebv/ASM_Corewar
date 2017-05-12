@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:51:42 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/12 00:13:24 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/12 02:58:03 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void			asm_error(int e, t_env *env, int l)
 		e == 11 ? ft_printf("Double ':' or '%%' in argument") : 0;
 		e == 12 ? ft_printf("Label not found in argument") : 0;
 		if (!l)
-			ft_printf(" | ERROR CODE (%d) at line %d\n", e, env ? env->nb_l : -1);
+			ft_printf(" at line %d | code error (%d)\n", env ? env->nb_l : -1, e);
 		else
-			ft_printf(" | ERROR CODE (%d) at line %d\n", e, l);
+			ft_printf(" at line %d | code error (%d)\n", l, e);
 		// FREE CE QU'IL Y A FREE MERCI BIEN MONSIEUR
 		exit(e);
 }

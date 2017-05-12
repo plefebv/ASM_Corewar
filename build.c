@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 23:39:37 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/12 00:35:23 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/12 03:19:59 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void			print_everything(t_env *env)
 			printf("INST = %s \n", i->instruction);
 			while (label)
 			{
-				printf("label name = %s\n", i->label->name);
+				printf("label name = %s\n", label->name);
 				label = label->next;
 			}
 			while (arg)

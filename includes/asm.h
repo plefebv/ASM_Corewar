@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:40:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/12 01:38:27 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/12 02:54:52 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct		s_arg
 	int				size;
 	int				is_label;
 	char			*label;
-	int				is_valid;
 	int				label_pos;
 	int				line;
 	struct s_arg	*next;

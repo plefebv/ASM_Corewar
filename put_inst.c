@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 22:40:39 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/12 00:17:06 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/12 03:17:22 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,7 @@ static void				add_arg(t_inst *inst, char *arg, t_op *op, t_env *env)
 	}
 	else
 	{
+		ft_printf("ADD ADD \n");
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = (t_arg *)ft_memalloc(sizeof(t_arg));
@@ -213,6 +214,7 @@ static void			get_arg(char *l, t_inst *inst, t_env *env)
 	ret = ft_strsplit(l, SEPARATOR_CHAR);
 	while (ret[i])
 	{
+		ft_printf("ret[i] == %s\n", ret[i]);
 		ret[i] = ft_strtrim_f(ret[i]);
 		arg_syntax_is_valid(ret[i], env);
 		add_arg(inst, ret[i], op, env);
