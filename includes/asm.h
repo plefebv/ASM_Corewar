@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:40:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 11:47:34 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 12:25:16 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void				check_if_label_exist(t_env *env);
 
 void				arg_syntax_is_valid(char *arg, t_env *env);
 void				get_arg(char *l, t_inst *inst, t_env *env);
-void				check_arg_type(t_inst *inst, t_op *op, t_env *env);
+void				check_arg_type(t_inst *inst, t_op *op, t_env *env, int i);
 
 /*
 ** type_of_line.c

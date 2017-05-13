@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 07:40:46 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 11:47:13 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 12:24:52 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,5 @@ void					get_arg(char *l, t_inst *inst, t_env *env)
 		add_arg(inst, ret[i], op, env);
 		i++;
 	}
-	check_arg_type(inst, op, env);
+	check_arg_type(inst, op, env, 0);
 }

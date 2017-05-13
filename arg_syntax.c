@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 07:45:28 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 08:09:09 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 12:50:24 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,21 @@
 
 static void				process_valid_arg(char *arg, int *i, int dig)
 {
-	if (dig)
+	if (dig == 1)
 	{
+		if (arg[*i] == '-')
+			(*i)++;
 		while (arg[*i] && ft_isdigit(arg[*i]))
+			(*i)++;
+	}
+	else if (!dig)
+	{
+		while (arg[*i] && ft_isalnum(arg[*i]))
 			(*i)++;
 	}
 	else
 	{
-		while (arg[*i] && ft_isalnum(arg[*i]))
+		while (arg[*i] && ft_isdigit(arg[*i]))
 			(*i)++;
 	}
 }
@@ -37,7 +44,7 @@ void					arg_syntax_is_valid(char *arg, t_env *env)
 	arg[i] ? asm_error(9, env, 0) : 0;
 	i = 1;
 	if (arg[0] && arg[0] == 'r')
-		process_valid_arg(arg, &i, 1);
+		process_valid_arg(arg, &i, 3);
 	else if (arg[0] && arg[0] == DIRECT_CHAR)
 	{
 		if (arg[1] && arg[1] == LABEL_CHAR)
