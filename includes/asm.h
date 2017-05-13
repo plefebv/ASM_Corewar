@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:40:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 08:54:09 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 09:23:22 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ typedef struct		s_env
 	int				nb_l;
 	int				fd;
 	int				have_label;
-	t_label			*label;
 	t_inst			*inst;
 }					t_env;
 
