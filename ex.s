@@ -1,14 +1,12 @@
-.name "zork
-is
-magic
+.name "zork is magic
 as fuck
 my friend
-from russia federation"    				#crouton sauvage
+from russia federation"
 
-.comment " 
- a basic 
-living prog
-you know my friend"# sti	r1,%:l5,%0
+.comment "1
+23 w dsad sad assd
+ ad asdsakdlaskjdlskajdlksajdlsajdlkasjldj 
+ jasdhlsahdlsahdlksajldjaslkdjlasjdlksajldkjaslkjdl"
 
 
 

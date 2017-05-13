@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 23:36:19 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 08:20:13 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 14:57:54 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,23 @@ static void			write_str_file(int fd, char *str, int size)
 	}
 }
 
+static void			write_header(int fd, t_env *env)
+{
+	env->header->magic = ft_endian_4_bytes(env->header->magic);
+	env->header->prog_size = ft_endian_4_bytes(env->header->prog_size);
+	write(fd, env->header, sizeof(t_header));
+}
+
 static void			write_cor(t_env *env)
 {
 	int				fd;
 	t_inst			*inst;
-	unsigned int	u;
 
 	inst = env->inst;
-	u = ft_endian_4_bytes(env->header->magic);
 	fd = open(env->name_file, O_WRONLY | O_TRUNC | O_CREAT, 0777);
 	fd == -1 ? asm_error(13, NULL, 0) : 0;
-	write(fd, &u, 4);
-	write_str_file(fd, env->header->prog_name, PROG_NAME_LENGTH + 4);
+	write_header(fd, env);
+	write_instruction(fd, env);
 }
 
 void				generate_file(t_env *env)

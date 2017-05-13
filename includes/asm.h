@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:40:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 12:25:16 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 14:56:44 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,5 +140,11 @@ void				check_arg_type(t_inst *inst, t_op *op, t_env *env, int i);
 int					get_type_line(char *l);
 int					get_opcode(char *line);
 t_op				*get_optab(char *name);
+
+/*
+** write_instruction.c
+*/
+
+void			write_instruction(int fd, t_env *env);
 
 #endif
