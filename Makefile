@@ -6,7 +6,7 @@
 #    By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/15 17:35:10 by plefebvr          #+#    #+#              #
-#    Updated: 2017/05/13 09:15:37 by plefebvr         ###   ########.fr        #
+#    Updated: 2017/05/13 10:40:51 by plefebvr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ FILES	= 	main.c \
 			put_inst.c \
 			get_arg.c \
 			arg_syntax.c \
+			check_arg_type.c \
 			generate_file.c \
 			check_label.c \
 			header.c \

@@ -17,6 +17,9 @@ l2:	sti	r1,%:l5,%0
 	and	r1,%0,r1
 label:	live	%1
 	zjmp	%:miaou
+ld %1, r1;
+st r1,1
+add r1,r1, r1
 vide:
 crote:
 flute:

@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 07:40:46 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 08:22:40 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 11:47:13 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,23 @@ static char				*grep_label(char *name, t_env *env)
 	return (ft_strsub(name, j, ft_strlen(name) - j));
 }
 
-static int				get_arg_size(char *arg, t_op *op)
+static void				get_arg_size_type(char *arg, t_op *op, t_arg *t)
 {
 	if (arg[0] == 'r')
-		return (1);
+	{
+		t->size = 1;
+		t->t = T_REG;
+	}
 	else if (arg[0] == DIRECT_CHAR)
-		return (op->label_size);
+	{
+		t->size = op->label_size;
+		t->t = T_DIR;
+	}
 	else
-		return (2);
+	{
+		t->size = 2;
+		t->t = T_IND;
+	}
 }
 
 static void				add_arg(t_inst *inst, char *arg, t_op *op, t_env *env)
@@ -81,7 +90,7 @@ static void				add_arg(t_inst *inst, char *arg, t_op *op, t_env *env)
 		!(tmp) ? malloc_error(0) : 0;
 	}
 	tmp->name = ft_strdup(arg);
-	tmp->size = get_arg_size(arg, op);
+	get_arg_size_type(arg, op, tmp);
 	tmp->is_label = is_label(tmp->name);
 	tmp->label = tmp->is_label ? grep_label(tmp->name, env) : NULL;
 	tmp->line = env->nb_l;
@@ -109,4 +118,5 @@ void					get_arg(char *l, t_inst *inst, t_env *env)
 		add_arg(inst, ret[i], op, env);
 		i++;
 	}
+	check_arg_type(inst, op, env);
 }

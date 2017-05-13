@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:40:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 09:23:22 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 11:47:34 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct		s_arg
 {
 	char			*name;
 	int				size;
+	int				t;
 	int				is_label;
 	char			*label;
 	int				label_pos;
@@ -125,11 +126,12 @@ void				generate_header(t_env *env);
 void				check_if_label_exist(t_env *env);
 
 /*
-** get_arg.c & syntax_arg.c
+** get_arg.c, syntax_arg.c & check_arg_type.c
 */
 
-void				get_arg(char *l, t_inst *inst, t_env *env);
 void				arg_syntax_is_valid(char *arg, t_env *env);
+void				get_arg(char *l, t_inst *inst, t_env *env);
+void				check_arg_type(t_inst *inst, t_op *op, t_env *env);
 
 /*
 ** type_of_line.c

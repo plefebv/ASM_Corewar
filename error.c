@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:51:42 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 10:00:58 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 11:54:57 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void			asm_error(int e, t_env *env, int l)
 	e == 13 ? ft_printf("Error to create the cor file") : 0;
 	e == 14 ? ft_printf("Bad character after name declaration") : 0;
 	e == 15 ? ft_printf("Bad character after comment declaration") : 0;
+	e == 16 ? ft_printf("Bad type of argument") : 0;
 	if (!l)
 		ft_printf(" at line %d | code error (%d)\n", env ? env->nb_l : -1, e);
 	else
