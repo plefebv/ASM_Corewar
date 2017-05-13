@@ -6,32 +6,11 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 23:53:04 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/12 02:50:41 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 07:53:53 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/asm.h"
-
-/*
-** reverse 4 bytes 11000110 00011111 00111111 11111100
-*/
-/*
-unsigned int	ft_endian(unsigned int n)
-{
-		return ((n >> 24) | ((n & 0xff0000) >> 8) | ((n & 0xff00) << 8) |
-						((n & 0xff) << 24));
-}
-
-** first convert n to 2 bytes length
-** reverse 2 bytes 11000011 00110011
-
-
-unsigned int	ft_endian(unsigned int n)
-{
-	n &= 0xffff;
-	return ((n >> 8) | ((n & 0xff) << 8);
-}
-*/
 
 static int		find_label(char *label, t_env *env)
 {
