@@ -6,12 +6,11 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 22:40:39 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 07:50:07 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 08:25:21 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/asm.h"
-
 
 static int			get_position(t_env *env)
 {
@@ -40,9 +39,10 @@ static t_inst		*get_last_inst(t_env *env)
 
 static char			*get_inst_name(char **l)
 {
-	int		i = 0;
+	int		i;
 	char	*tmp;
 
+	i = 0;
 	while (l[0][i] && ft_isalpha(l[0][i]))
 		i++;
 	tmp = ft_strsub(l[0], 0, i);
@@ -61,9 +61,7 @@ static int			get_inst_size(t_inst *inst, t_env *env)
 	i = 0;
 	ret = 1;
 	if (inst->arg == NULL)
-	{
 		return (0);
-	}	
 	arg = inst->arg;
 	op = get_optab(inst->instruction);
 	ret += op->need_oc;

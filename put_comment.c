@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 14:20:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/12 00:16:22 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 08:24:01 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ static void		last_join(char *s, t_env *env)
 	ft_memdel((void **)&tojoin);
 }
 
-static void		comment_process(t_env *env)
+static void		comment_process(t_env *env, char *tmp)
 {
 	char	c;
 	char	*line;
 
 	line = NULL;
-	c = 0;	
+	c = 0;
+	ft_memdel((void **)&tmp);
 	while (get_next_line(env->fd, &line) > 0)
 	{
 		env->nb_l++;
@@ -72,20 +73,22 @@ static void		get_comment(char *comment, t_env *env)
 		j++;
 	env->comment = ft_strsub(tmp, i, j - i);
 	if (!tmp[j])
-		comment_process(env);
+		comment_process(env, tmp);
+	else
+		ft_memdel((void **)&tmp);
 }
 
 void			put_comment(char *l, t_env *env)
 {
 	int		i;
 	char	*trim;
-	i = 0;
 
+	i = 0;
 	while (l[i] && (l[i] == ' ' || l[i] == '\t'))
 		i++;
 	trim = ft_strsub(l, i, ft_strlen(l) - i);
 	if (!(ft_strncmp(trim, COMMENT_CMD_STRING, ft_strlen(COMMENT_CMD_STRING))))
-			get_comment(trim, env);
+		get_comment(trim, env);
 	if (ft_strlen(env->comment) > COMMENT_LENGTH)
 		asm_error(7, env, 0);
 }

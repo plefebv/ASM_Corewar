@@ -1,5 +1,13 @@
-.name "zork"
-.comment "just a basic living prog"
+.name "zork
+is
+magic
+as fuck
+my friend
+from russia federation"
+.comment "just
+ a basic 
+living prog
+you know my friend"
 	
 l5:
 l3:	

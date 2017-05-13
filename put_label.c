@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 18:22:58 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/12 03:27:54 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 08:28:34 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void		new_inst_label(t_env *env, char *name)
 {
-	t_inst		*new;
-	t_inst		*tmp;
+	t_inst	*new;
+	t_inst	*tmp;
 
 	tmp = env->inst;
 	new = (t_inst *)ft_memalloc(sizeof(t_inst));
@@ -34,7 +34,7 @@ static void		new_inst_label(t_env *env, char *name)
 		tmp->next = new;
 	}
 }
- 
+
 static void		add_label_to_label(char *l, t_env *env)
 {
 	t_inst	*tmp;
@@ -42,7 +42,7 @@ static void		add_label_to_label(char *l, t_env *env)
 
 	tmp = env->inst;
 	l_tmp = NULL;
-	while(tmp->next)
+	while (tmp->next)
 		tmp = tmp->next;
 	l_tmp = tmp->label;
 	while (l_tmp->next)
@@ -56,8 +56,8 @@ static void		add_label_to_label(char *l, t_env *env)
 
 static int		check_if_inst(char *l)
 {
-	char *t;
-	int ret;
+	char	*t;
+	int		ret;
 
 	t = ft_strtrim(l);
 	ret = get_opcode(t);
@@ -69,7 +69,7 @@ static int		check_if_inst(char *l)
 void			put_label(char *l, t_env *env)
 {
 	int		i;
-	char 	*t;
+	char	*t;
 	char	*tmp;
 
 	i = 0;

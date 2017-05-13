@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 23:53:04 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 07:53:53 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 08:10:03 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void			check_if_label_exist(t_env *env)
 		while (arg)
 		{
 			if (arg->is_label)
-				(find_label(arg->label, env)) ? 0 : asm_error(12, env, arg->line);
+				find_label(arg->label, env) ? 0 : asm_error(12, env, arg->line);
 			arg = arg->next;
 		}
 		inst = inst->next;

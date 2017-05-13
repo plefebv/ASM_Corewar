@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 07:40:46 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 07:42:28 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 08:22:40 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,11 @@ static char				*grep_label(char *name, t_env *env)
 		}
 		i++;
 	}
-	if (!label || label > 1 || direct > 1)
-		asm_error(11, env, 0);
+	(!label || label > 1 || direct > 1) ? asm_error(11, env, 0) : 0;
 	return (ft_strsub(name, j, ft_strlen(name) - j));
 }
 
-static int			get_arg_size(char *arg, t_op *op)
+static int				get_arg_size(char *arg, t_op *op)
 {
 	if (arg[0] == 'r')
 		return (1);
@@ -88,7 +87,11 @@ static void				add_arg(t_inst *inst, char *arg, t_op *op, t_env *env)
 	tmp->line = env->nb_l;
 }
 
-void			get_arg(char *l, t_inst *inst, t_env *env)
+/*
+**  FREE CHAR **RET PLZ
+*/
+
+void					get_arg(char *l, t_inst *inst, t_env *env)
 {
 	char		**ret;
 	int			i;
@@ -106,6 +109,4 @@ void			get_arg(char *l, t_inst *inst, t_env *env)
 		add_arg(inst, ret[i], op, env);
 		i++;
 	}
-	//free ret;
 }
-

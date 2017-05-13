@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:04:52 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 07:50:58 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 08:31:11 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 /*
 ** reverse 4 bytes 11000110 00011111 00111111 11111100
 */
+
 unsigned int	ft_endian_4_bytes(unsigned int n)
 {
-		return ((n >> 24) | ((n & 0xff0000) >> 8) | ((n & 0xff00) << 8) |
-						((n & 0xff) << 24));
+	return ((n >> 24) | ((n & 0xff0000) >> 8) | ((n & 0xff00) << 8) |
+					((n & 0xff) << 24));
 }
 
 /*
@@ -32,7 +33,7 @@ unsigned int	ft_endian_2_bytes(unsigned int n)
 	return ((n >> 8) | ((n & 0xff) << 8));
 }
 
-int			get_ocp(char *inst, t_arg *arg)
+int				get_ocp(char *inst, t_arg *arg)
 {
 	t_op	*op;
 	char	*ret;
@@ -61,7 +62,7 @@ int			get_ocp(char *inst, t_arg *arg)
 	return (i);
 }
 
-int			contain_quote(char *s)
+int				contain_quote(char *s)
 {
 	int			i;
 

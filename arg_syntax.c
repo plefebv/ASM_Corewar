@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 07:45:28 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 07:46:10 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 08:09:09 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void				process_valid_arg(char *arg, int *i, int dig)
 	}
 }
 
-void				arg_syntax_is_valid(char *arg, t_env *env)
+void					arg_syntax_is_valid(char *arg, t_env *env)
 {
 	int		i;
 
@@ -49,7 +49,7 @@ void				arg_syntax_is_valid(char *arg, t_env *env)
 			process_valid_arg(arg, &i, 1);
 	}
 	else if (arg[0] && arg[0] != LABEL_CHAR)
-			process_valid_arg(arg, &i, 1);
+		process_valid_arg(arg, &i, 1);
 	else
 		return ;
 	arg[i] ? asm_error(9, env, 0) : 0;

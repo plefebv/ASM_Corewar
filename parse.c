@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 18:43:52 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 08:02:58 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 08:17:48 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,11 @@ t_env			*parse_s_file(char *file)
 	char	*line;
 	int		line_type;
 
-
 	env = (t_env *)ft_memalloc(sizeof(t_env));
 	init(env);
 	put_file_name(file, env);
 	env->fd = open(file, O_RDONLY);
-	while (get_next_line(env->fd, &line) > 0)	
+	while (get_next_line(env->fd, &line) > 0)
 	{
 		env->nb_l++;
 		line_type = get_type_line(line);

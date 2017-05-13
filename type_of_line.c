@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 15:33:17 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/12 03:28:53 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 08:30:21 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int		check_if_label(char *line)
 	return (0);
 }
 
-int		get_opcode(char *line)
+int				get_opcode(char *line)
 {
 	int		i;
 	char	*tmp;
@@ -69,7 +69,7 @@ t_op			*get_optab(char *name)
 	while (op_tab[i].inst)
 	{
 		if (!(ft_strcmp(op_tab[i].inst, name)))
-				return (&op_tab[i]);
+			return (&op_tab[i]);
 		i++;
 	}
 	return (NULL);
