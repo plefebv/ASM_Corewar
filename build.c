@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 23:39:37 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/12 03:19:59 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 09:17:41 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void			print_everything(t_env *env)
 		ft_printf("env null\n");
 	else
 	{
-		ft_printf("env->name = %s\n", env->header->prog_name);
+		ft_printf("env->header->name = %s\n\n", env->header->prog_name);
+		ft_printf("env->header->comment = %s\n\n", env->header->comment);
 		i = env->inst;
 		while (i)
 		{

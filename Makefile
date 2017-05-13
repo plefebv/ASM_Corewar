@@ -6,7 +6,7 @@
 #    By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/15 17:35:10 by plefebvr          #+#    #+#              #
-#    Updated: 2017/05/13 07:45:17 by plefebvr         ###   ########.fr        #
+#    Updated: 2017/05/13 09:15:37 by plefebvr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ FILES	= 	main.c \
 			generate_file.c \
 			check_label.c \
 			header.c \
-			build.c
+			build.c \
 
 LIB	= -L libft -lft
 

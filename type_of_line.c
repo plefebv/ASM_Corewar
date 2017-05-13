@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 15:33:17 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 08:30:21 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 09:15:59 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int				get_opcode(char *line)
 	i = 0;
 	while (i <= 15)
 	{
-		if (!(ft_strcmp(tmp, op_tab[i].inst)))
+		if (!(ft_strcmp(tmp, g_op_tab[i].inst)))
 		{
 			ft_memdel((void **)&tmp);
 			return ((i + 1) * 10);
@@ -66,10 +66,10 @@ t_op			*get_optab(char *name)
 	int		i;
 
 	i = 0;
-	while (op_tab[i].inst)
+	while (g_op_tab[i].inst)
 	{
-		if (!(ft_strcmp(op_tab[i].inst, name)))
-			return (&op_tab[i]);
+		if (!(ft_strcmp(g_op_tab[i].inst, name)))
+			return (&g_op_tab[i]);
 		i++;
 	}
 	return (NULL);
