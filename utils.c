@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:04:52 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/12 03:51:26 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 07:50:58 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,35 @@ unsigned int	ft_endian_2_bytes(unsigned int n)
 {
 	n &= 0xffff;
 	return ((n >> 8) | ((n & 0xff) << 8));
+}
+
+int			get_ocp(char *inst, t_arg *arg)
+{
+	t_op	*op;
+	char	*ret;
+	t_arg	*tmp;
+	int		i;
+
+	tmp = arg;
+	op = get_optab(inst);
+	if (op && op->need_oc == 0)
+		return (-1);
+	ret = ft_strdup("");
+	while (tmp)
+	{
+		if (tmp->name[0] == 'r')
+			ret = ft_strjoin_f1(ret, "01");
+		else if (tmp->name[0] == DIRECT_CHAR)
+			ret = ft_strjoin_f1(ret, "10");
+		else
+			ret = ft_strjoin_f1(ret, "11");
+		tmp = tmp->next;
+	}
+	while (ft_strlen(ret) != 8)
+		ret = ft_strjoin_f1(ret, "00");
+	i = ft_atoi_base(ret, 2);
+	ft_memdel((void **)&ret);
+	return (i);
 }
 
 int			contain_quote(char *s)

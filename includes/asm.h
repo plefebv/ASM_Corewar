@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:40:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/12 03:45:04 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 07:50:39 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,13 @@ void				cut_comment(char **line);
 void				generate_file(t_env *env);
 void				generate_header(t_env *env);
 void				check_if_label_exist(t_env *env);
+void				get_arg(char *l, t_inst *inst, t_env *env);
+void				arg_syntax_is_valid(char *arg, t_env *env);
+
 
 int					get_type_line(char *l);
 int					get_opcode(char *line);
+int					get_ocp(char *inst, t_arg *arg);
 int					contain_quote(char *s);
 t_op				*get_optab(char *name);
 unsigned int		ft_endian_2_bytes(unsigned int n);
