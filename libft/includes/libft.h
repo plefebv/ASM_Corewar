@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 14:49:09 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/09 14:49:37 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/14 17:19:37 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,6 @@ void				ft_putchar(char c);
 int					ft_checkchar(const char *str, char c);
 int					ft_atoi_base(char *str, int base);
 int					ft_atoi_base_f(char *str, int base);
+short					ft_atos(const char *str);
 
 #endif

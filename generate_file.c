@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 23:36:19 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 14:57:54 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/14 16:19:16 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void				generate_file(t_env *env)
 {
 	generate_header(env);
 	check_last_inst(env);
-	print_everything(env);
+	//print_everything(env);
 	check_if_label_exist(env);
 	env->name_file = ft_strjoin_f1(env->name_file, ".cor");
 	write_cor(env);

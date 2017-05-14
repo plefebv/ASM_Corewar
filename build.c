@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 23:39:37 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 09:17:41 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/13 15:36:53 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void			print_everything(t_env *env)
 			ft_printf("total octal size = %d\n",  i->size);
 			ft_printf("position = %d\n", i->pos);
 			ft_printf("ocp = %8d\n", i->ocp);
+			ft_printf("label_size = %d", i->label_size);
 			ft_printf("\n");
 			c = 0;
 			i = i->next;

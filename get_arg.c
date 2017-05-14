@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 07:40:46 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 12:24:52 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/14 17:38:22 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,17 @@ static void				get_arg_size_type(char *arg, t_op *op, t_arg *t)
 	if (arg[0] == 'r')
 	{
 		t->size = 1;
-		t->t = T_REG;
+		t->t = 1;
 	}
 	else if (arg[0] == DIRECT_CHAR)
 	{
-		t->size = op->label_size;
-		t->t = T_DIR;
+		t->size = op->label_size;	
+		t->t = 2;
 	}
 	else
 	{
 		t->size = 2;
-		t->t = T_IND;
+		t->t = 4;
 	}
 }
 

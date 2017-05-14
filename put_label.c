@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 18:22:58 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 08:28:34 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/14 15:19:47 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void		new_inst_label(t_env *env, char *name)
 	new->label->name = ft_strdup(name);
 	new->label->original = 1;
 	new->label->next = NULL;
+	new->ocp = -1;
 	if (!tmp)
 		env->inst = new;
 	else
