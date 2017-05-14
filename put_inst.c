@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 22:40:39 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/14 18:51:36 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/14 19:46:36 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,21 @@ static t_inst		*get_last_inst(t_env *env)
 {
 	t_inst	*tmp;
 
+	tmp = NULL;
+	if (!env->inst)
+	{
+		env->inst = (t_inst *)ft_memalloc(sizeof(t_inst));
+		if (!env->inst)
+			malloc_error(0);
+		env->inst->label = NULL;
+		env->inst->instruction = NULL;
+		env->inst->arg = NULL;
+		env->inst->size = 0;
+		env->inst->pos = 0;
+		env->inst->ocp = -1;
+		env->inst->next = NULL;
+		return (env->inst);
+	}
 	tmp = env->inst;
 	while (tmp->next)
 		tmp = tmp->next;
