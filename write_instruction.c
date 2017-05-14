@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 13:23:00 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/14 17:40:29 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/14 19:17:37 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void		write_r(int fd, char *r, t_arg *arg)
 {
 	int			i;
-	char		tmp;
 	char c;
 
 	i = 0;
@@ -45,6 +44,7 @@ static int		find_label_pos(char *search, t_env *env, t_arg *arg)
 		inst = inst->next;
 	}
 	asm_error(12, NULL, arg->line);
+	return (42);
 }
 
 static void		putrevcpy(int fd, char *src, int size)
@@ -65,7 +65,6 @@ static void		write_dir(int fd, t_arg *arg, t_env *env, t_inst *inst)
 	else
 	{
 		ret = ft_atoi(arg->name + 1);
-		ft_printf("WRITE_DIR NO LABEL | ret = %d\n", ret);
 		putrevcpy(fd, (char *)&ret, arg->size);
 	}
 }
@@ -82,7 +81,6 @@ static void		write_ind(int fd, t_arg *arg, t_env *env, t_inst *inst)
 	else
 	{
 		ret = ft_atoi(arg->name);
-		ft_printf("WRITE_IND NO LABEL | arg->name = |%s| | ret = %d\n", arg->name, ret);
 		putrevcpy(fd, (char *)&ret, 2);
 	}
 }
@@ -92,23 +90,14 @@ static void		write_arg(int fd, t_arg *arg, t_env *env, t_inst *inst)
 	t_arg	*tmp;
 	
 	tmp = arg;
-	ft_printf("INST = %s\n", inst->instruction);
 	while (tmp)
 	{
-		ft_printf("   ARG = %s\n", tmp->name);
-		if (tmp->t == 1) // REG
-		{
-				ft_printf("WRITE_R\n");
+		if (tmp->t == 1) 
 				write_r(fd, tmp->name, tmp);
-		}
-		else if (tmp->t == 2) //DIR
-		{
+		else if (tmp->t == 2) 
 			write_dir(fd, tmp, env, inst);
-		}
-		else if (tmp->t == 4) // IND
-		{
+		else if (tmp->t == 4)
 			write_ind(fd, tmp, env, inst);
-		}
 		tmp = tmp->next;
 	}
 }
@@ -126,13 +115,9 @@ void			write_instruction(int fd, t_env *env)
 			op = get_optab(inst->instruction);
 			write(fd, &(op->opcode), 1);
 			if (inst->ocp != -1)
-			{
 				write(fd, &(inst->ocp), 1);
-			}
 			if (inst->arg)
-			{
 				write_arg(fd, inst->arg, env, inst);
-			}
 		}
 		inst = inst->next;
 	}

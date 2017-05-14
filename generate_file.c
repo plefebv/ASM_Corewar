@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 23:36:19 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/14 16:19:16 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/14 19:15:37 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,6 @@ static void			check_last_inst(t_env *env)
 		inst = inst->next;
 	if (!inst->instruction)
 		inst->pos = env->header->prog_size;
-}
-
-static void			write_str_file(int fd, char *str, int size)
-{
-	int		i;
-
-	i = 0;
-	while (i < size)
-	{
-		write(fd, str + i, 1);
-		i++;
-	}
 }
 
 static void			write_header(int fd, t_env *env)
