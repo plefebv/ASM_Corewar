@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 14:20:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 10:04:06 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/14 18:35:49 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static void		last_join(char *s, t_env *env)
 			asm_error(14, env, 0);
 		i++;
 	}
+	free(s);
 	ft_memdel((void **)&tojoin);
 }
 
@@ -108,4 +109,5 @@ void			put_name(char *l, t_env *env)
 		ft_memdel((void **)&trim);
 		asm_error(6, env, 0);
 	}
+	ft_memdel((void **)&trim);
 }

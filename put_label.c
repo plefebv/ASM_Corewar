@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 18:22:58 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/14 15:19:47 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/14 18:49:41 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static int		check_if_inst(char *l)
 
 	t = ft_strtrim(l);
 	ret = get_opcode(t);
+	ft_memdel((void **)&t);
 	if (ret == -1)
 		return (0);
 	return (ret);
@@ -91,5 +92,6 @@ void			put_label(char *l, t_env *env)
 		put_inst(tmp, env);
 		env->have_label = 0;
 	}
+	ft_memdel((void **)&t);
 	ft_memdel((void **)&tmp);
 }

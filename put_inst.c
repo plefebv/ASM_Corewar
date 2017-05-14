@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 22:40:39 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 08:25:21 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/14 18:51:36 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,5 @@ void				put_inst(char *l, t_env *env)
 	inst->pos = get_position(env);
 	inst->next = NULL;
 	env->have_label = 0;
+	ft_memdel((void **)&trim);
 }

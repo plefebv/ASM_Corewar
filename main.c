@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:49:13 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/12 04:21:11 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/14 18:19:21 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@ int		main(int ac, char **av)
 		asm_error(0, NULL, 0);
 	env = parse_s_file(av[ac - 1]);
 	generate_file(env);
+	free_env(env);
+	while (1);
 	return (0);
 }

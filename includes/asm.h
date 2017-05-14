@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:40:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/13 14:56:44 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/14 18:11:59 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,5 +146,11 @@ t_op				*get_optab(char *name);
 */
 
 void			write_instruction(int fd, t_env *env);
+
+/*
+** free.c
+*/
+
+void			free_env(t_env *env);
 
 #endif
