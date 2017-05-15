@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 14:20:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/14 18:35:38 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/15 17:21:35 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,13 @@ static void		get_comment(char *comment, t_env *env)
 			ft_strlen(comment) - ft_strlen(COMMENT_CMD_STRING));
 	while (tmp[i] && (tmp[i] == ' ' || tmp[i] == '\t'))
 		i++;
-	if (tmp[i] == '"')
+	if (tmp[i] && tmp[i] == '"')
 		i++;
 	else
+	{
+		ft_memdel((void **)&tmp);
 		asm_error(3, env, 0);
+	}
 	j = i;
 	while (tmp[j] && tmp[j] != '"')
 		j++;

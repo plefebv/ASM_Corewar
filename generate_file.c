@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 23:36:19 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/14 19:15:37 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/15 14:22:05 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,24 @@ static void			write_cor(t_env *env)
 
 void				generate_file(t_env *env)
 {
+	int		i;
+	int		slash;
+
+	i = 0;
+	slash = 0;
 	generate_header(env);
 	check_last_inst(env);
 	//print_everything(env);
 	check_if_label_exist(env);
 	env->name_file = ft_strjoin_f1(env->name_file, ".cor");
 	write_cor(env);
+	while (env->name_file[i])
+	{
+		if (env->name_file[i] == '/')
+			slash = i;
+		i++;	
+	}
+	if (slash)
+		env->name_file = ft_strsub_f(env->name_file, slash + 1, ft_strlen(env->name_file) - slash);
+	ft_printf("Writing output program to %s\n", env->name_file);
 }

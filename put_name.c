@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 14:20:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/14 18:35:49 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/15 17:20:35 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void		last_join(char *s, t_env *env)
 	tojoin = ft_strsub(s, 0, i);
 	env->name = ft_strjoin_f1(env->name, "\n");
 	env->name = ft_strjoin_f1(env->name, tojoin);
-	ft_printf("S = |%s|\n", s);
 	i++;
 	while (s[i])
 	{
@@ -76,11 +75,11 @@ static void		get_name(char *name, t_env *env)
 			ft_strlen(name) - ft_strlen(NAME_CMD_STRING));
 	while (tmp[i] && (tmp[i] == ' ' || tmp[i] == '\t'))
 		i++;
-	if (tmp[i] == '"')
+	if (tmp[i] && tmp[i] == '"')
 		i++;
 	else
 	{
-		ft_memdel((void **)tmp);
+		ft_memdel((void **)&tmp);
 		asm_error(2, env, 0);
 	}
 	j = i;

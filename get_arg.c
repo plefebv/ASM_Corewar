@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 07:40:46 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/14 18:37:18 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/15 18:59:29 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ static char				*grep_label(char *name, t_env *env)
 
 static void				get_arg_size_type(char *arg, t_op *op, t_arg *t)
 {
+	int		ok;
+
+	ok = 0;
 	if (arg[0] == 'r')
 	{
 		t->size = 1;
@@ -109,7 +112,7 @@ void					get_arg(char *l, t_inst *inst, t_env *env)
 	op = get_optab(inst->instruction);
 	i = 0;
 	if (ft_strlen(l) <= 1)
-		return ;
+		asm_error(19, env, 0);
 	ret = ft_strsplit(l, SEPARATOR_CHAR);
 	while (ret[i])
 	{
