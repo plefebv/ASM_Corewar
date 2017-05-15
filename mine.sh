@@ -24,6 +24,17 @@ else
 		hexdump -C $1.cor >> diff_$1.txt
 		echo "\n\n$1_zaz.cor\n" >> diff_$1.txt
 		hexdump -C $1_zaz.cor >> diff_$1.txt
+		echo "$1.s : binary diff" >> all_error.txt
 	fi
+fi
+if [ ! -e $1.cor ] && [ -e $1_zaz.cor ]
+then
+	echo "J'ai une erreur que je ne devrais pas avoir $1.s"	
+	echo "$1.s : error not legit" >> all_error.txt
+fi
+if [ -e $1.cor ] && [ ! -e $1_zaz.cor ]
+then
+	echo "Il me manque la detection d'un erreur sur le fichier $1.s"
+	echo "$1.s : missing an error" >> all_error.txt
 fi
 rm $1_zaz.s
