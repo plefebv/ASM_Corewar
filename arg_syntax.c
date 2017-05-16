@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 07:45:28 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/16 22:45:58 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/17 01:32:34 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void				process_valid_arg(char *arg, int *i, int dig, t_env *e)
 	}
 	else if (!dig)
 	{
-		while (arg[*i] && ft_isalnum(arg[*i]))
+		while (arg[*i] && (ft_isalnum(arg[*i]) || arg[*i] == '_'))
 			(*i)++;
 	}
 	else
