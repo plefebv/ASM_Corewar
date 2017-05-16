@@ -14,7 +14,7 @@ asssssssssssssssssssssssssssss
 sdssadsa"
 .comment" dsad ; # dsad as" #miaou
 r1:
-ld %:r1, r1
+ld r1, r1
 r1:
 p1:
 #dsadsad

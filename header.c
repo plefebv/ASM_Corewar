@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 16:22:51 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/15 17:26:13 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/16 23:00:35 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void			generate_header(t_env *env)
 
 	i = 0;
 	env->header = (t_header *)ft_memalloc(sizeof(t_header));
-	!(env->header) ? malloc_error(0) : 0;
+	!(env->header) ? malloc_error(0, env) : 0;
 	inst = env->inst;
 	env->header->magic = COREWAR_EXEC_MAGIC;
 	env->header->prog_size = 0;

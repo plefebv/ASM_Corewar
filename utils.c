@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:04:52 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/15 17:16:14 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/16 23:39:20 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int				contain_quote(char *s)
 	}
 	return (0);
 }
-
 
 void			cut_comment(char **line)
 {

@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 14:20:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/15 17:20:35 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/16 15:38:20 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,5 @@ void			put_name(char *l, t_env *env)
 		asm_error(6, env, 0);
 	}
 	ft_memdel((void **)&trim);
+	env->have_name = 1;
 }

@@ -6,7 +6,7 @@
 #    By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/15 17:35:10 by plefebvr          #+#    #+#              #
-#    Updated: 2017/05/14 18:12:18 by plefebvr         ###   ########.fr        #
+#    Updated: 2017/05/16 23:32:41 by plefebvr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,8 @@ FILES	= 	main.c \
 			check_label.c \
 			header.c \
 			write_instruction.c \
+			write_process.c \
 			free.c \
-			build.c \
 
 LIB	= -L libft -lft
 

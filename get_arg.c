@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 07:40:46 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/15 18:59:29 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/16 23:41:32 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void				get_arg_size_type(char *arg, t_op *op, t_arg *t)
 	}
 	else if (arg[0] == DIRECT_CHAR)
 	{
-		t->size = op->label_size;	
+		t->size = op->label_size;
 		t->t = 2;
 	}
 	else
@@ -81,7 +81,7 @@ static void				add_arg(t_inst *inst, char *arg, t_op *op, t_env *env)
 	if (!tmp)
 	{
 		inst->arg = (t_arg *)ft_memalloc(sizeof(t_arg));
-		!(inst->arg) ? malloc_error(0) : 0;
+		!(inst->arg) ? malloc_error(0, env) : 0;
 		tmp = inst->arg;
 	}
 	else
@@ -90,7 +90,7 @@ static void				add_arg(t_inst *inst, char *arg, t_op *op, t_env *env)
 			tmp = tmp->next;
 		tmp->next = (t_arg *)ft_memalloc(sizeof(t_arg));
 		tmp = tmp->next;
-		!(tmp) ? malloc_error(0) : 0;
+		!(tmp) ? malloc_error(0, env) : 0;
 	}
 	tmp->name = ft_strdup(arg);
 	get_arg_size_type(arg, op, tmp);

@@ -6,14 +6,17 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 07:45:28 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/14 14:22:58 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/16 22:45:58 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/asm.h"
 
-static void				process_valid_arg(char *arg, int *i, int dig)
+static void				process_valid_arg(char *arg, int *i, int dig, t_env *e)
 {
+	int check;
+
+	check = 0;
 	if (dig == 1)
 	{
 		if (arg[*i] == '-')
@@ -30,6 +33,9 @@ static void				process_valid_arg(char *arg, int *i, int dig)
 	{
 		while (arg[*i] && ft_isdigit(arg[*i]))
 			(*i)++;
+		check = ft_atoi(arg + 1);
+		if (check < 0 || check > REG_NUMBER)
+			asm_error(20, e, 0);
 	}
 }
 
@@ -44,19 +50,19 @@ void					arg_syntax_is_valid(char *arg, t_env *env)
 	arg[i] ? asm_error(9, env, 0) : 0;
 	i = 1;
 	if (arg[0] && arg[0] == 'r')
-		process_valid_arg(arg, &i, 3);
+		process_valid_arg(arg, &i, 3, env);
 	else if (arg[0] && arg[0] == DIRECT_CHAR)
 	{
 		if (arg[1] && arg[1] == LABEL_CHAR)
 		{
 			i++;
-			process_valid_arg(arg, &i, 0);
+			process_valid_arg(arg, &i, 0, env);
 		}
 		else
-			process_valid_arg(arg, &i, 1);
+			process_valid_arg(arg, &i, 1, env);
 	}
 	else if (arg[0] && arg[0] != LABEL_CHAR)
-		process_valid_arg(arg, &i, 1);
+		process_valid_arg(arg, &i, 1, env);
 	else
 		return ;
 	arg[i] ? asm_error(9, env, 0) : 0;

@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 18:22:58 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/14 18:49:41 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/16 23:04:52 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static void		new_inst_label(t_env *env, char *name)
 
 	tmp = env->inst;
 	new = (t_inst *)ft_memalloc(sizeof(t_inst));
+	!new ? malloc_error(0, env) : 0;
 	new->label = (t_label *)ft_memalloc(sizeof(t_label));
-	if (!new || !new->label)
-		malloc_error(0);
+	!new->label ? malloc_error(0, env) : 0;
 	new->label->name = ft_strdup(name);
 	new->label->original = 1;
 	new->label->next = NULL;
@@ -50,7 +50,7 @@ static void		add_label_to_label(char *l, t_env *env)
 		l_tmp = l_tmp->next;
 	l_tmp->next = (t_label *)ft_memalloc(sizeof(t_label));
 	if (!l_tmp->next)
-		malloc_error(0);
+		malloc_error(0, env);
 	else
 		l_tmp->next->name = ft_strdup(l);
 }

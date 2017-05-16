@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:40:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/14 18:11:59 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/16 23:32:02 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef struct		s_env
 	char			*name_file;
 	char			*comment;
 	t_header		*header;
+	int				have_name;
+	int				have_comment;
 	int				nb_l;
 	int				fd;
 	int				have_label;
@@ -61,17 +63,11 @@ typedef struct		s_env
 }					t_env;
 
 /*
-** Tmp function
-*/
-
-void				print_everything(t_env *env);
-
-/*
 ** Error.c
 */
 
 void				asm_error(int e, t_env *env, int l);
-void				malloc_error(int e);
+void				malloc_error(int e, t_env *env);
 
 /*
 ** Parse.c
@@ -146,6 +142,13 @@ t_op				*get_optab(char *name);
 */
 
 void			write_instruction(int fd, t_env *env);
+int				find_label_pos(char *search, t_env *env, t_arg *arg);
+
+/*
+** write_process.c
+*/
+
+void			write_arg(int fd, t_arg *arg, t_env *env, t_inst *inst);
 
 /*
 ** free.c

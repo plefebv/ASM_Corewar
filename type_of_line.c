@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 15:33:17 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/15 19:14:06 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/16 23:39:54 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int				get_opcode(char *line)
 	char	*tmp;
 
 	i = 0;
-	while (line[i] && line[i] != '\t' && line[i] != ' ' && line[i] != DIRECT_CHAR
-			&&line[i] != LABEL_CHAR)
+	while (line[i] && line[i] != '\t' && line[i] != ' ' &&
+			line[i] != DIRECT_CHAR && line[i] != LABEL_CHAR)
 		i++;
 	tmp = ft_strsub(line, 0, i);
 	i = 0;
