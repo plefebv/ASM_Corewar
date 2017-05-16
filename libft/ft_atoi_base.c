@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 10:10:19 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/09 13:59:00 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/17 00:01:23 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ static int	convert_str(char c, int base)
 		ret = c - 66;
 	else
 		ret = -1;
-	if (ret < base && ret != - 1)
+	if (ret < base && ret != -1)
 		return (ret);
 	return (-1);
 }
-
 
 static int	lgt_nbr(char *str, int base)
 {
@@ -56,7 +55,7 @@ int			ft_atoi_base(char *str, int base)
 		str++;
 	ret = 0;
 	lgt = lgt_nbr(str, base) - 1;
-	while (*str && lgt >= 0 && convert_str(*str, base) != - 1)
+	while (*str && lgt >= 0 && convert_str(*str, base) != -1)
 	{
 		ret += convert_str(*str, base) * ft_power(base, lgt);
 		str++;

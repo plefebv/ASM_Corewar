@@ -6,7 +6,7 @@
 #    By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/07/21 10:45:45 by plefebvr          #+#    #+#              #
-#    Updated: 2017/05/14 17:18:51 by plefebvr         ###   ########.fr        #
+#    Updated: 2017/05/17 00:00:29 by plefebvr         ###   ########.fr        #
 # **************************************************************************** #
 
 NAME = libft.a
@@ -27,8 +27,6 @@ SRC =	ft_isprint.c \
 		ft_strsub.c \
 		ft_atoi.c \
 		ft_atoi_base.c \
-		ft_atoi_base_f.c \
-		ft_atos.c \
 		ft_lstadd.c \
 		ft_memchr.c \
 		ft_putendl.c \
