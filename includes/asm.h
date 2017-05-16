@@ -6,7 +6,7 @@
 /*   By: plefebvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/15 17:40:36 by plefebvr          #+#    #+#             */
-/*   Updated: 2017/05/16 23:32:02 by plefebvr         ###   ########.fr       */
+/*   Updated: 2017/05/16 23:43:39 by plefebvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,19 +141,19 @@ t_op				*get_optab(char *name);
 ** write_instruction.c
 */
 
-void			write_instruction(int fd, t_env *env);
-int				find_label_pos(char *search, t_env *env, t_arg *arg);
+void				write_instruction(int fd, t_env *env);
+int					find_label_pos(char *search, t_env *env, t_arg *arg);
 
 /*
 ** write_process.c
 */
 
-void			write_arg(int fd, t_arg *arg, t_env *env, t_inst *inst);
+void				write_arg(int fd, t_arg *arg, t_env *env, t_inst *inst);
 
 /*
 ** free.c
 */
 
-void			free_env(t_env *env);
+void				free_env(t_env *env);
 
 #endif
